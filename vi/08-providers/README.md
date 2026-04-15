@@ -88,4 +88,59 @@ pi --model sonnet:high
 3. environment variable
 4. `models.json`
 
+## Custom Providers qua `models.json`
+
+File: `~/.pi/agent/models.json` — reload tự động khi mở `/model`, không cần restart.
+
+### Ollama (ví dụ nhanh nhất)
+
+```json
+{
+  "providers": {
+    "ollama": {
+      "baseUrl": "http://localhost:11434/v1",
+      "api": "openai-completions",
+      "apiKey": "ollama",
+      "models": [
+        { "id": "llama3.1:8b" },
+        { "id": "qwen2.5-coder:7b" }
+      ]
+    }
+  }
+}
+```
+
+### OpenRouter
+
+```json
+{
+  "providers": {
+    "openrouter": {
+      "baseUrl": "https://openrouter.ai/api/v1",
+      "apiKey": "OPENROUTER_API_KEY",
+      "api": "openai-completions",
+      "models": [
+        { "id": "anthropic/claude-3.5-sonnet", "name": "Claude 3.5 (OpenRouter)" }
+      ]
+    }
+  }
+}
+```
+
+### Proxy provider có sẵn
+
+```json
+{
+  "providers": {
+    "anthropic": {
+      "baseUrl": "https://my-proxy.example.com/v1"
+    }
+  }
+}
+```
+
+Giữ nguyên tất cả model built-in, chỉ đổi endpoint.
+
+Chi tiết đầy đủ (model fields, compat, API key resolution): xem [bản English](../../08-providers/README.md#custom-providers).
+
 Xem bản đầy đủ: [../../08-providers/README.md](../../08-providers/README.md)

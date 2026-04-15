@@ -34,6 +34,7 @@ This guide explains the main parts of pi:
 | [08-providers](08-providers/README.md) | OAuth subscriptions, API keys, cloud providers |
 | [09-settings](09-settings/README.md) | Global and project settings reference |
 | [10-pi-packages](10-pi-packages/README.md) | Packaging, installation, sharing resources |
+| [11-prompt-templates](11-prompt-templates/README.md) | Reusable prompt macros, arguments, examples |
 
 Additional references:
 - [CATALOG.md](CATALOG.md) - feature catalog

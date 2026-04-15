@@ -34,6 +34,7 @@ Bộ tài liệu này giải thích các phần quan trọng của pi:
 | [08-providers](08-providers/README.md) | OAuth subscriptions, API keys, cloud providers |
 | [09-settings](09-settings/README.md) | Settings toàn cục và theo project |
 | [10-pi-packages](10-pi-packages/README.md) | Đóng gói và chia sẻ resources |
+| [11-prompt-templates](11-prompt-templates/README.md) | Prompt macro tái sử dụng, tham số, ví dụ |
 
 Tham khảo thêm:
 - [CATALOG.md](CATALOG.md)
@@ -77,5 +78,6 @@ pi
 - [x] 08-providers
 - [x] 09-settings
 - [x] 10-pi-packages
+- [x] 11-prompt-templates
 - [x] CATALOG.md
 - [x] QUICK_REFERENCE.md

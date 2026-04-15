@@ -172,20 +172,43 @@ This can fork an existing session file or a partial session UUID directly.
 
 Long sessions eventually approach context limits. Compaction summarizes older messages while preserving enough recent context to continue work.
 
-### Manual compaction
+### How It Works
+
+```
+Before compaction:
+
+  [msg1] [msg2] [msg3] [msg4] [msg5] [msg6] [msg7] [msg8]
+   \___________________/  \_____________________________/
+     summarized              kept (recent)
+                             ↑
+                    firstKeptEntryId
+
+After compaction (what LLM sees):
+
+  [system prompt] [summary] [msg4] [msg5] [msg6] [msg7] [msg8]
+```
+
+1. Pi walks backwards from newest message, accumulating tokens until `keepRecentTokens` is reached
+2. Everything older is summarized by the LLM
+3. The summary replaces old messages in context
+4. Full raw history remains in the JSONL session file
+
+### When It Triggers
+
+**Automatic** (default on):
+- When `contextTokens > contextWindow - reserveTokens`
+- When approaching context limit proactively
+
+**Manual:**
 
 ```bash
 /compact
 /compact Focus on recent code changes and unresolved bugs
 ```
 
-### Automatic compaction
+The optional text focuses the summary on specific topics.
 
-Enabled by default. It triggers when:
-- context overflow happens and pi needs to recover
-- pi is approaching the model context window and compacts proactively
-
-Configure it in `/settings` or `settings.json`:
+### Settings
 
 ```json
 {
@@ -197,9 +220,96 @@ Configure it in `/settings` or `settings.json`:
 }
 ```
 
-### Important note
+| Setting | Default | Description |
+|---------|---------|-------------|
+| `enabled` | `true` | Enable auto-compaction |
+| `reserveTokens` | `16384` | Tokens reserved for LLM response |
+| `keepRecentTokens` | `20000` | Recent tokens to keep (not summarized) |
 
-Compaction is **lossy for prompt context**, but the full raw history still remains in the JSONL session file. Use `/tree` if you need to revisit older branches or pre-compaction points.
+**Tuning tips:**
+- Đầu ra lớn (code generation): tăng `reserveTokens` lên 32768
+- Session ngắn, context nhỏ: giảm `keepRecentTokens` xuống 10000
+- Muốn tắt hẳn: `"enabled": false` (vẫn dùng `/compact` thủ công được)
+
+### Summary Format
+
+Compaction summaries follow a structured format:
+
+```markdown
+## Goal
+[What the user is trying to accomplish]
+
+## Progress
+### Done
+- [x] Completed tasks
+### In Progress
+- [ ] Current work
+
+## Key Decisions
+- **Decision**: Rationale
+
+## Next Steps
+1. What should happen next
+
+<read-files>
+path/to/file1.ts
+</read-files>
+
+<modified-files>
+path/to/changed.ts
+</modified-files>
+```
+
+This preserves: goals, progress, decisions, file context. The agent can continue seamlessly after compaction.
+
+### Branch Summarization
+
+When you use `/tree` to navigate to a different branch, pi offers to summarize the branch you're leaving. This injects context from the old branch into the new one.
+
+```
+         ┌─ B ─ C ─ D (leaving → summarized)
+    A ───┤
+         └─ E ─ F (navigating here)
+```
+
+Configure via settings:
+
+```json
+{
+  "branchSummary": {
+    "reserveTokens": 16384,
+    "skipPrompt": false
+  }
+}
+```
+
+Set `skipPrompt: true` to skip the “Summarize branch?” dialog (defaults to no summary).
+
+### Custom Compaction via Extensions
+
+Extensions can intercept compaction via the `session_before_compact` event:
+
+```typescript
+pi.on("session_before_compact", async (event, ctx) => {
+  // Cancel compaction
+  return { cancel: true };
+
+  // Or provide custom summary
+  return {
+    compaction: {
+      summary: "Your custom summary...",
+      firstKeptEntryId: event.preparation.firstKeptEntryId,
+      tokensBefore: event.preparation.tokensBefore,
+    }
+  };
+});
+```
+
+Similarly, `session_before_tree` intercepts branch summarization.
+
+### Recovery
+
+Compaction is **lossy for prompt context** but the full raw history remains in the JSONL session file. Use `/tree` to revisit older branches or pre-compaction points. Extension `pi-vcc` adds search over compacted history via `/pi-vcc-recall`.
 
 ## Export & Share
 

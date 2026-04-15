@@ -213,13 +213,176 @@ Or provide a service account key file through `GOOGLE_APPLICATION_CREDENTIALS`.
 
 ### Via `models.json`
 
-Use this when a provider speaks a supported API:
-- OpenAI Completions
-- OpenAI Responses
-- Anthropic Messages
-- Google Generative AI
+File: `~/.pi/agent/models.json`
 
-This is how you add services such as Ollama, LM Studio, or vLLM.
+Use this when a provider speaks a supported API. The file reloads each time you open `/model` — no restart needed.
+
+#### Supported APIs
+
+| API | Description |
+|-----|-------------|
+| `openai-completions` | OpenAI Chat Completions (most compatible) |
+| `openai-responses` | OpenAI Responses API |
+| `anthropic-messages` | Anthropic Messages API |
+| `google-generative-ai` | Google Generative AI |
+
+#### Minimal Example: Ollama
+
+```json
+{
+  "providers": {
+    "ollama": {
+      "baseUrl": "http://localhost:11434/v1",
+      "api": "openai-completions",
+      "apiKey": "ollama",
+      "models": [
+        { "id": "llama3.1:8b" },
+        { "id": "qwen2.5-coder:7b" }
+      ]
+    }
+  }
+}
+```
+
+`apiKey` is required but Ollama ignores it — any value works.
+
+#### Full Example: Custom Model
+
+```json
+{
+  "providers": {
+    "ollama": {
+      "baseUrl": "http://localhost:11434/v1",
+      "api": "openai-completions",
+      "apiKey": "ollama",
+      "models": [
+        {
+          "id": "llama3.1:8b",
+          "name": "Llama 3.1 8B (Local)",
+          "reasoning": false,
+          "input": ["text"],
+          "contextWindow": 128000,
+          "maxTokens": 32000,
+          "cost": { "input": 0, "output": 0, "cacheRead": 0, "cacheWrite": 0 }
+        }
+      ]
+    }
+  }
+}
+```
+
+#### Model Fields
+
+| Field | Required | Default | Description |
+|-------|----------|---------|-------------|
+| `id` | Yes | — | Model ID sent to API |
+| `name` | No | `id` | Display name in `/model` |
+| `api` | No | provider's | Override API per model |
+| `reasoning` | No | `false` | Supports extended thinking |
+| `input` | No | `["text"]` | `["text"]` or `["text", "image"]` |
+| `contextWindow` | No | `128000` | Context window (tokens) |
+| `maxTokens` | No | `16384` | Max output tokens |
+| `cost` | No | all zeros | Per million tokens |
+
+#### OpenRouter Example
+
+```json
+{
+  "providers": {
+    "openrouter": {
+      "baseUrl": "https://openrouter.ai/api/v1",
+      "apiKey": "OPENROUTER_API_KEY",
+      "api": "openai-completions",
+      "models": [
+        {
+          "id": "anthropic/claude-3.5-sonnet",
+          "name": "Claude 3.5 Sonnet (OpenRouter)"
+        }
+      ]
+    }
+  }
+}
+```
+
+#### Google AI Studio Example (Gemma)
+
+```json
+{
+  "providers": {
+    "my-google": {
+      "baseUrl": "https://generativelanguage.googleapis.com/v1beta",
+      "api": "google-generative-ai",
+      "apiKey": "GEMINI_API_KEY",
+      "models": [
+        {
+          "id": "gemma-4-31b-it",
+          "name": "Gemma 4 31B",
+          "input": ["text", "image"],
+          "contextWindow": 262144,
+          "reasoning": true
+        }
+      ]
+    }
+  }
+}
+```
+
+#### Proxy an Existing Provider
+
+Route a built-in provider through a proxy without redefining models:
+
+```json
+{
+  "providers": {
+    "anthropic": {
+      "baseUrl": "https://my-proxy.example.com/v1"
+    }
+  }
+}
+```
+
+All built-in models remain available.
+
+#### API Key Resolution
+
+`apiKey` and `headers` support three formats:
+
+| Format | Example |
+|--------|---------|
+| Shell command | `"!security find-generic-password -ws 'anthropic'"` |
+| Env variable | `"MY_API_KEY"` |
+| Literal | `"sk-..."` |
+
+#### OpenAI Compatibility (`compat`)
+
+For servers with partial OpenAI compatibility (Ollama, vLLM, SGLang):
+
+```json
+{
+  "providers": {
+    "ollama": {
+      "baseUrl": "http://localhost:11434/v1",
+      "api": "openai-completions",
+      "apiKey": "ollama",
+      "compat": {
+        "supportsDeveloperRole": false,
+        "supportsReasoningEffort": false
+      },
+      "models": [{ "id": "llama3.1:8b" }]
+    }
+  }
+}
+```
+
+Key compat fields:
+
+| Field | What it does |
+|-------|--------------|
+| `supportsDeveloperRole` | `false` → send `system` instead of `developer` role |
+| `supportsReasoningEffort` | `false` → don't send `reasoning_effort` |
+| `maxTokensField` | `"max_tokens"` or `"max_completion_tokens"` |
+| `thinkingFormat` | `"reasoning_effort"`, `"qwen"`, `"zai"` |
+| `openRouterRouting` | Provider routing preferences for OpenRouter |
 
 ### Via extensions
 
