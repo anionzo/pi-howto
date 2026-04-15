@@ -11,11 +11,6 @@ npm install -g @mariozechner/pi-coding-agent
 ## Start
 
 ```bash
-# API key flow
-export ANTHROPIC_API_KEY=sk-ant-...
-pi
-
-# Subscription flow
 pi
 /login
 ```

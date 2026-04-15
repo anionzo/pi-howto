@@ -9,10 +9,6 @@ npm install -g @mariozechner/pi-coding-agent
 ## Bắt đầu
 
 ```bash
-export ANTHROPIC_API_KEY=sk-ant-...
-pi
-
-# hoặc
 pi
 /login
 ```

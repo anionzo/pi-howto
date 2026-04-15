@@ -26,10 +26,7 @@ Use `/logout` to clear stored credentials.
 
 Set a provider key in the environment or `~/.pi/agent/auth.json`.
 
-```bash
-export ANTHROPIC_API_KEY=sk-ant-...
-pi
-```
+Start pi after setting the environment variable for your selected provider.
 
 ## Selecting Models
 
