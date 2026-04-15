@@ -9,7 +9,7 @@ Extensions are the main escape hatch when the built-in harness is not enough.
 - Register **custom tools** with `pi.registerTool()`
 - Intercept or block **tool calls**
 - Add **slash commands** such as `/deploy` or `/review`
-- Register **keyboard shortcuts** and **CLI flags`
+- Register **keyboard shortcuts** and **CLI flags**
 - Hook into **session**, **agent**, **tool**, and **model** lifecycle events
 - Build **custom UI** with notifications, dialogs, widgets, overlays, and TUI components
 - Persist **extension state** across restarts
@@ -62,7 +62,12 @@ export default function (pi: ExtensionAPI) {
 Test it with:
 
 ```bash
-pi -e ./my-extension.ts
+# one-off load from the exact file path
+pi -e ~/.pi/agent/extensions/my-extension.ts
+
+# or just start pi normally (auto-discovers that location)
+pi
+# then use /reload after edits
 ```
 
 ## Extension Locations

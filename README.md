@@ -47,12 +47,10 @@ Additional references:
 ```bash
 npm install -g @mariozechner/pi-coding-agent
 
-# API key flow
-export ANTHROPIC_API_KEY=sk-ant-...
+# start pi
 pi
 
-# or subscription flow
-pi
+# login and select your provider
 /login
 ```
 

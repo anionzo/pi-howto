@@ -46,12 +46,10 @@ Tham khảo thêm:
 ```bash
 npm install -g @mariozechner/pi-coding-agent
 
-# Dùng API key
-export ANTHROPIC_API_KEY=sk-ant-...
+# chạy pi
 pi
 
-# Hoặc dùng subscription
-pi
+# đăng nhập và chọn provider bạn dùng
 /login
 ```
 

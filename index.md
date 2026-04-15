@@ -20,6 +20,7 @@ Use this file as an alternate entrypoint when a tool or renderer prefers `index.
 8. [08-providers](08-providers/README.md)
 9. [09-settings](09-settings/README.md)
 10. [10-pi-packages](10-pi-packages/README.md)
+11. [11-prompt-templates](11-prompt-templates/README.md)
 
 ## Translations
 
