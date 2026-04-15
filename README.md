@@ -6,6 +6,8 @@
 
 > Practical documentation for using and customizing the pi coding agent.
 
+Pi is a minimal terminal coding harness. This repo organizes the core concepts, day-one usage, and deeper customization paths into a guide you can navigate progressively.
+
 ## What This Repo Covers
 
 This guide explains the main parts of pi:
@@ -19,13 +21,14 @@ This guide explains the main parts of pi:
 - providers and models
 - settings
 - pi packages
+- prompt templates
 
 ## Table of Contents
 
 | Section | Description |
 |---------|-------------|
-| [01-commands](01-commands/README.md) | Slash commands, CLI options, editor features, message queue |
-| [02-memory](02-memory/README.md) | `AGENTS.md`, `KNOWNS.md`, `SYSTEM.md`, `APPEND_SYSTEM.md`, settings |
+| [01-commands](01-commands/README.md) | Commands, common shortcuts, editor features, message queue |
+| [02-memory](02-memory/README.md) | `AGENTS.md`, `CLAUDE.md`, `SYSTEM.md`, `APPEND_SYSTEM.md`, settings |
 | [03-skills](03-skills/README.md) | Skill locations, format, validation, built-in workflow skills |
 | [04-extensions](04-extensions/README.md) | TypeScript extensions, events, tools, commands, UI |
 | [05-themes](05-themes/README.md) | Theme format, 51 color tokens, hot reload |
@@ -50,17 +53,18 @@ npm install -g @mariozechner/pi-coding-agent
 # start pi
 pi
 
-# login and select your provider
+# log in and pick your provider
 /login
 ```
 
 ## Common First Actions
 
 ```bash
-/model          # pick model
+/model          # pick a model
 /settings       # tune theme, thinking, transport
+/new            # start a fresh session
 /resume         # reopen older work
-/tree           # navigate current session tree
+/tree           # navigate the current session tree
 /hotkeys        # see shortcuts
 ```
 
@@ -68,12 +72,13 @@ pi
 
 | Feature | What it gives you | Quick entry |
 |---------|-------------------|-------------|
-| Commands | Interactive control over sessions and runtime | `/settings`, `/tree`, `/resume` |
-| Sessions | Persistent JSONL conversation history with branching | `/fork`, `/compact` |
-| Skills | Reusable capability packages | `/skill:kn-plan` |
-| Extensions | Custom tools, events, commands, UI | `.pi/extensions/` |
+| Commands | Interactive control over sessions and runtime | `/login`, `/model`, `/settings` |
+| Sessions | Persistent JSONL conversation history with branching | `/resume`, `/tree`, `/fork`, `/compact` |
+| Memory | Project instructions and prompt shaping | `AGENTS.md`, `CLAUDE.md`, `SYSTEM.md`, `APPEND_SYSTEM.md` |
+| Skills | Reusable capability packages | `/skill:name` |
+| Extensions | Custom tools, events, commands, and UI | `.pi/extensions/` |
 | Themes | Visual customization with hot reload | `/settings` |
-| Memory | Context and workflow files | `AGENTS.md`, `KNOWNS.md` |
+| Prompt Templates | Reusable prompt macros for repeatable tasks | `.pi/prompts/`, `/template-name` |
 | Packages | Shareable bundles of extensions/skills/prompts/themes | `pi install ...` |
 
 ## Documentation Status
@@ -89,6 +94,7 @@ pi
 - [x] 08-providers
 - [x] 09-settings
 - [x] 10-pi-packages
+- [x] 11-prompt-templates
 - [x] CATALOG.md
 - [x] QUICK_REFERENCE.md
 
@@ -104,6 +110,7 @@ pi
 - [x] 08-providers
 - [x] 09-settings
 - [x] 10-pi-packages
+- [x] 11-prompt-templates
 - [x] CATALOG.md
 - [x] QUICK_REFERENCE.md
 

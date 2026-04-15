@@ -1,14 +1,15 @@
-# Keybindings
+# Phím tắt
 
-Pi cho phép tùy biến mọi phím tắt qua `~/.pi/agent/keybindings.json`.
+Pi cho phép tùy biến toàn bộ phím tắt qua `~/.pi/agent/keybindings.json`. Mỗi hành động có thể gán cho một hoặc nhiều tổ hợp phím.
 
-Sau khi sửa file, chạy `/reload` để áp dụng.
+Sau khi sửa file, dùng `/reload` để áp dụng.
 
-## Format
+## Định dạng
 
-Dạng chung: `modifier+key`
+Phím tắt dùng dạng `modifier+key`.
 
-Modifiers:
+### Tổ hợp bổ trợ
+
 - `ctrl`
 - `shift`
 - `alt`
@@ -18,7 +19,14 @@ Ví dụ:
 - `alt+ctrl+x`
 - `ctrl+1`
 
-## Nhóm keybindings chính
+### Một số key phổ biến
+
+- chữ cái: `a-z`
+- chữ số: `0-9`
+- phím đặc biệt: `escape`, `enter`, `tab`, `space`, `backspace`, `delete`, `home`, `end`, `pageUp`, `pageDown`, `up`, `down`, `left`, `right`
+- phím chức năng: `f1` đến `f12`
+
+## Các nhóm phím tắt chính
 
 ### Editor
 - `tui.editor.cursorUp`
@@ -35,7 +43,7 @@ Ví dụ:
 - `tui.input.submit`
 - `tui.input.tab`
 
-### Application
+### Ứng dụng
 - `app.interrupt`
 - `app.clear`
 - `app.exit`
@@ -43,7 +51,7 @@ Ví dụ:
 - `app.editor.external`
 - `app.clipboard.pasteImage`
 
-### Sessions
+### Phiên làm việc
 - `app.session.new`
 - `app.session.tree`
 - `app.session.fork`
@@ -51,20 +59,20 @@ Ví dụ:
 - `app.session.rename`
 - `app.session.delete`
 
-### Models & Thinking
+### Model và thinking
 - `app.model.select`
 - `app.model.cycleForward`
 - `app.model.cycleBackward`
 - `app.thinking.cycle`
 - `app.thinking.toggle`
 
-### Tree Navigation
+### Điều hướng cây session
 - `app.tree.foldOrUp`
 - `app.tree.unfoldOrDown`
 - `app.tree.editLabel`
 - `app.tree.toggleLabelTimestamp`
 
-## Ví dụ config
+## Ví dụ cấu hình
 
 ```json
 {
@@ -74,13 +82,19 @@ Ví dụ:
 }
 ```
 
-## Shortcut hay dùng
+## Một số phím tắt hay dùng
 
-- `Ctrl+L` - model selector
-- `Ctrl+P` - cycle model
-- `Shift+Tab` - cycle thinking
-- `Ctrl+O` - toggle tool output
-- `Ctrl+T` - toggle thinking
-- `Ctrl+G` - external editor
+- `Ctrl+L` — mở bảng chọn model
+- `Ctrl+P` — chuyển model tiến tới
+- `Shift+Ctrl+P` — chuyển model lùi lại
+- `Shift+Tab` — đổi mức thinking
+- `Ctrl+O` — bật/tắt tool output
+- `Ctrl+T` — bật/tắt thinking blocks
+- `Ctrl+G` — mở trình soạn thảo ngoài
+- `Escape` — hủy thao tác hiện tại
 
-Xem bản đầy đủ: [../../07-keybindings/README.md](../../07-keybindings/README.md)
+## Đọc tiếp
+
+- [06-sessions](../06-sessions/README.md)
+- [09-settings](../09-settings/README.md)
+- Bản đầy đủ tiếng Anh: [../../07-keybindings/README.md](../../07-keybindings/README.md)

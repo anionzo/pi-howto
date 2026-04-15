@@ -1,21 +1,32 @@
-# Themes
+# Giao diện
 
-Themes là file JSON định nghĩa màu cho TUI của pi.
+Giao diện (themes) là các file JSON định nghĩa màu cho TUI của pi. Chúng điều khiển viền, màu tin nhắn, markdown, syntax highlighting, diff và màu viền editor theo mức thinking.
 
-## Built-in themes
+## Giao diện có sẵn
 
 - `dark`
 - `light`
 
-## Vị trí load theme
+Lần chạy đầu tiên, pi có thể chọn mặc định phù hợp theo nền terminal.
 
+## Vị trí nạp theme
+
+Pi nạp theme từ:
+
+- built-in: `dark`, `light`
 - `~/.pi/agent/themes/*.json`
 - `.pi/themes/*.json`
-- package `themes/`
-- `settings.json` → `themes`
-- CLI `--theme <path>`
+- package pi
+- mảng `themes` trong `settings.json`
+- `--theme <path>` trên CLI
 
-## Chọn theme
+Dùng `--no-themes` để tắt tự động phát hiện.
+
+## Chọn giao diện
+
+Cách phổ biến nhất là chọn qua `/settings`.
+
+Hoặc đặt trong `settings.json`:
 
 ```json
 {
@@ -23,34 +34,65 @@ Themes là file JSON định nghĩa màu cho TUI của pi.
 }
 ```
 
-Hoặc chọn qua `/settings`.
-
 ## Hot reload
 
-Khi chỉnh file theme đang active, pi tự reload ngay.
+Khi bạn chỉnh file theme tùy chỉnh đang được dùng, pi sẽ tự nạp lại ngay. Điều này rất tiện để tinh chỉnh màu trực tiếp.
 
-## Theme format
+## Định dạng theme
 
-- `name`
-- `vars` (optional)
-- `colors` (bắt buộc đủ 51 tokens)
-- `$schema` (khuyên dùng)
+```json
+{
+  "$schema": "https://raw.githubusercontent.com/badlogic/pi-mono/main/packages/coding-agent/src/modes/interactive/theme/theme-schema.json",
+  "name": "my-theme",
+  "vars": {
+    "primary": "#00aaff"
+  },
+  "colors": {
+    "accent": "primary",
+    "border": "primary",
+    "text": ""
+  }
+}
+```
 
-## Các nhóm token
+Các trường chính:
+- `name` — tên theme, bắt buộc và phải duy nhất
+- `vars` — bảng màu tái sử dụng, không bắt buộc
+- `colors` — bắt buộc, phải khai báo đủ 51 token
+- `$schema` — không bắt buộc nhưng nên có để editor hỗ trợ tốt hơn
 
-- Core UI (11)
-- Backgrounds & Content (11)
-- Markdown (10)
-- Tool Diffs (3)
-- Syntax Highlighting (9)
-- Thinking Level Borders (6)
-- Bash Mode (1)
+## Nhóm token màu
+
+Một theme đầy đủ phải có đủ 51 token, chia thành các nhóm:
+
+- Core UI
+- Backgrounds & Content
+- Markdown
+- Tool Diffs
+- Syntax Highlighting
+- Thinking Level Borders
+- Bash Mode
+
+Ngoài ra có thể có thêm phần `export` để điều khiển màu khi dùng `/export` sang HTML.
 
 ## Kiểu giá trị màu
 
-- hex: `#ff0000`
-- 256-color: `39`
-- variable: `"primary"`
-- default terminal color: `""`
+Pi hỗ trợ bốn kiểu giá trị:
 
-Xem bản đầy đủ: [../../05-themes/README.md](../../05-themes/README.md)
+- hex: `"#ff0000"`
+- 256-color: `39`
+- biến trong `vars`: `"primary"`
+- màu mặc định của terminal: `""`
+
+## Mẹo sử dụng
+
+- theme nền tối thường cần màu nhấn sáng hơn
+- theme nền sáng cần độ tương phản chữ mạnh hơn
+- nên thử với markdown, diff, output dài và thinking blocks
+- nếu dùng VS Code terminal, có thể cần chỉnh contrast để thấy màu chính xác hơn
+
+## Đọc tiếp
+
+- [04-extensions](../04-extensions/README.md)
+- [09-settings](../09-settings/README.md)
+- Bản đầy đủ tiếng Anh: [../../05-themes/README.md](../../05-themes/README.md)

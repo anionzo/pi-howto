@@ -1,19 +1,20 @@
-# Catalog tính năng
+# Danh mục tính năng
 
-Bản tóm tắt nhanh các tính năng chính của pi.
+Bảng tóm tắt ngắn về các khả năng chính của pi và nơi nên đọc tiếp.
 
 ## Các nhóm chính
 
-- Commands
-- Memory & Context
-- Skills
-- Extensions
-- Themes
-- Sessions
-- Keybindings
-- Providers & Models
-- Settings
-- Pi Packages
+- Lệnh
+- Bộ nhớ và ngữ cảnh
+- Kỹ năng
+- Tiện ích mở rộng
+- Giao diện
+- Phiên làm việc
+- Phím tắt
+- Nhà cung cấp và mô hình
+- Cài đặt
+- Gói pi
+- Mẫu prompt
 
 ## Điều hướng
 
@@ -27,13 +28,16 @@ Bản tóm tắt nhanh các tính năng chính của pi.
 - [08-providers](08-providers/README.md)
 - [09-settings](09-settings/README.md)
 - [10-pi-packages](10-pi-packages/README.md)
+- [11-prompt-templates](11-prompt-templates/README.md)
 
 ## Ghi nhớ nhanh
 
-- Commands điều khiển interactive runtime
-- Sessions lưu lịch sử dạng JSONL tree
-- Skills là capability packages load theo nhu cầu
-- Extensions là điểm mở rộng mạnh nhất
-- Themes tùy biến UI với hot reload
-- Settings điều khiển runtime behavior
-- Pi packages dùng để chia sẻ resources
+- Lệnh giúp điều khiển phiên làm việc và runtime
+- Bộ nhớ/ngữ cảnh xoay quanh `AGENTS.md`, `SYSTEM.md`, `APPEND_SYSTEM.md`, `settings.json` và lịch sử phiên
+- Kỹ năng là các gói quy trình được nạp theo nhu cầu
+- Tiện ích mở rộng là điểm mở rộng mạnh nhất cho công cụ, sự kiện và UI
+- Giao diện dùng để tùy biến phần nhìn với hot reload
+- Phiên làm việc lưu lịch sử dạng JSONL có phân nhánh
+- Cài đặt điều khiển hành vi runtime
+- Gói pi dùng để chia sẻ tài nguyên
+- Mẫu prompt giúp tái sử dụng prompt theo dạng macro

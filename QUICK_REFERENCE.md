@@ -19,15 +19,15 @@ pi
 
 | Command | Purpose |
 |---------|---------|
-| `/model` | Select model |
-| `/settings` | Configure theme, thinking, transport |
-| `/resume` | Open previous session |
-| `/new` | Start new session |
-| `/session` | Show path, usage, cost |
-| `/tree` | Navigate current session tree |
-| `/fork` | Create a new session from current branch |
-| `/compact` | Compact context manually |
-| `/reload` | Reload extensions, skills, prompts, context |
+| `/model` | Select a model |
+| `/settings` | Configure theme, thinking, and transport |
+| `/resume` | Open a previous session |
+| `/new` | Start a new session |
+| `/session` | Show path, usage, and cost |
+| `/tree` | Navigate the current session tree |
+| `/fork` | Create a new session from the current branch |
+| `/compact` | Compact older context manually |
+| `/reload` | Reload extensions, skills, prompts, and context |
 | `/hotkeys` | Show all keyboard shortcuts |
 
 ## Essential CLI Flags
@@ -48,13 +48,13 @@ pi --mode rpc                # RPC mode
 
 | Key | Action |
 |-----|--------|
-| `Enter` | Submit prompt |
+| `Enter` | Submit prompt when pi is idle |
 | `Shift+Enter` | New line |
 | `Escape` | Abort / cancel |
 | `Ctrl+C` | Clear editor |
-| `Ctrl+D` | Exit when editor empty |
+| `Ctrl+D` | Exit when editor is empty |
 | `Ctrl+G` | Open external editor |
-| `Ctrl+L` | Model selector |
+| `Ctrl+L` | Open model selector |
 | `Ctrl+P` | Cycle models forward |
 | `Shift+Ctrl+P` | Cycle models backward |
 | `Shift+Tab` | Cycle thinking level |
@@ -67,8 +67,8 @@ pi --mode rpc                # RPC mode
 
 | Action | Meaning |
 |--------|---------|
-| `Enter` while streaming | queue steer message |
-| `Alt+Enter` | queue follow-up after all work completes |
+| `Enter` while streaming | queue a steering message |
+| `Alt+Enter` | queue a follow-up after all current work completes |
 | `Escape` | abort and restore queued messages |
 
 ## File Locations
@@ -79,22 +79,11 @@ pi --mode rpc                # RPC mode
 | Sessions | `~/.pi/agent/sessions/` |
 | Settings | `~/.pi/agent/settings.json` |
 | Auth file | `~/.pi/agent/auth.json` |
-| AGENTS | `~/.pi/agent/AGENTS.md` |
+| Project instructions | `~/.pi/agent/AGENTS.md` |
 | Extensions | `~/.pi/agent/extensions/` |
 | Skills | `~/.pi/agent/skills/` |
 | Themes | `~/.pi/agent/themes/` |
 | Keybindings | `~/.pi/agent/keybindings.json` |
-
-## Skills Workflow
-
-```text
-/skill:kn-init
-  → /skill:kn-plan
-  → /skill:kn-implement
-  → /skill:kn-verify
-  → /skill:kn-doc
-  → /skill:kn-commit
-```
 
 ## Package Management
 
@@ -112,9 +101,9 @@ pi config
 | File | Purpose |
 |------|---------|
 | `AGENTS.md` | Project instructions |
-| `KNOWNS.md` | Canonical repo memory / workflow guidance |
-| `SYSTEM.md` | Replace system prompt |
-| `APPEND_SYSTEM.md` | Append to system prompt |
+| `CLAUDE.md` | Compatibility alternative to `AGENTS.md` |
+| `SYSTEM.md` | Replace the default system prompt |
+| `APPEND_SYSTEM.md` | Append to the default system prompt |
 | `settings.json` | Runtime behavior and resource loading |
 
 ## Read Next

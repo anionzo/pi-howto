@@ -1,14 +1,21 @@
-# Pi Packages
+# Gói pi
 
-Pi packages dùng để bundle extensions, skills, prompt templates, và themes để chia sẻ qua npm hoặc git.
+Gói pi (pi packages) cho phép bạn đóng gói extensions, skills, prompt templates và themes để chia sẻ qua npm, git hoặc đường dẫn cục bộ.
 
-## Install & Manage
+## Vì sao nên dùng gói pi?
+
+- chia sẻ workflow đã đóng gói sẵn
+- cài cùng một bộ công cụ chỉ bằng một lệnh
+- version hóa cách dùng agent cùng với mã nguồn
+- phân phối công cụ riêng của team qua npm hoặc git
+
+## Cài đặt và quản lý
 
 ```bash
 pi install npm:@foo/bar@1.0.0
 pi install git:github.com/user/repo@v1
 pi install https://github.com/user/repo
-pi install ./relative/path
+pi install ./relative/path/to/package
 
 pi remove npm:@foo/bar
 pi uninstall npm:@foo/bar
@@ -17,7 +24,13 @@ pi update
 pi config
 ```
 
-## Các loại source
+Mặc định, `pi install` và `pi remove` cập nhật cấu hình toàn cục. Dùng `-l` để cài theo project:
+
+```bash
+pi install -l npm:@foo/bar
+```
+
+## Các loại nguồn
 
 ### npm
 - `npm:@scope/pkg@1.2.3`
@@ -29,13 +42,13 @@ pi config
 - `https://github.com/user/repo@v1`
 - `ssh://git@github.com/user/repo@v1`
 
-### local path
+### Đường dẫn cục bộ
 - `/absolute/path/to/package`
 - `./relative/path/to/package`
 
 ## Tạo package
 
-Thêm `pi` key vào `package.json`:
+### Cách 1: khai báo tường minh bằng khóa `pi`
 
 ```json
 {
@@ -50,16 +63,48 @@ Thêm `pi` key vào `package.json`:
 }
 ```
 
-## Convention directories
+### Cách 2: theo convention directory
 
-Nếu không có `pi` manifest, pi auto-discover từ:
+Nếu không có `pi` manifest, pi sẽ tự phát hiện từ:
 - `extensions/`
 - `skills/`
 - `prompts/`
 - `themes/`
 
-## Security
+## Cấu trúc ví dụ
 
-Pi packages có full system access. Chỉ cài từ nguồn bạn tin tưởng.
+```text
+my-package/
+├── package.json
+├── extensions/
+│   └── my-extension.ts
+├── skills/
+│   └── code-review/
+│       └── SKILL.md
+├── prompts/
+│   └── review.md
+└── themes/
+    └── my-theme.json
+```
 
-Xem bản đầy đủ: [../../10-pi-packages/README.md](../../10-pi-packages/README.md)
+## Bật hoặc tắt tài nguyên
+
+Dùng:
+
+```bash
+pi config
+```
+
+Bạn có thể bật/tắt extension, skill, prompt và theme từ package đã cài.
+
+## Bảo mật
+
+> **Cảnh báo:** Gói pi có thể chạy mã với toàn quyền trên hệ thống. Extensions có thể thực thi mã tùy ý và skills có thể hướng dẫn model chạy lệnh. Chỉ cài từ nguồn bạn tin tưởng.
+
+## Đọc tiếp
+
+- [03-skills](../03-skills/README.md)
+- [04-extensions](../04-extensions/README.md)
+- [05-themes](../05-themes/README.md)
+- [09-settings](../09-settings/README.md)
+- Bản đầy đủ tiếng Anh: [../../10-pi-packages/README.md](../../10-pi-packages/README.md)

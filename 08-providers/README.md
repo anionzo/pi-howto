@@ -26,7 +26,21 @@ Use `/logout` to clear stored credentials.
 
 Set a provider key in the environment or `~/.pi/agent/auth.json`.
 
-Start pi after setting the environment variable for your selected provider.
+Example using OpenAI:
+
+**macOS/Linux**
+
+```bash
+export OPENAI_API_KEY="sk-..."
+pi
+```
+
+**Windows PowerShell**
+
+```powershell
+$env:OPENAI_API_KEY="sk-..."
+pi
+```
 
 ## Selecting Models
 

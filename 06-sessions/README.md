@@ -227,9 +227,9 @@ The optional text focuses the summary on specific topics.
 | `keepRecentTokens` | `20000` | Recent tokens to keep (not summarized) |
 
 **Tuning tips:**
-- Đầu ra lớn (code generation): tăng `reserveTokens` lên 32768
-- Session ngắn, context nhỏ: giảm `keepRecentTokens` xuống 10000
-- Muốn tắt hẳn: `"enabled": false` (vẫn dùng `/compact` thủ công được)
+- For large outputs such as code generation, increase `reserveTokens` to `32768`
+- For shorter sessions or smaller context windows, reduce `keepRecentTokens` to `10000`
+- To disable auto-compaction, set `"enabled": false` (manual `/compact` still works)
 
 ### Summary Format
 
@@ -309,7 +309,7 @@ Similarly, `session_before_tree` intercepts branch summarization.
 
 ### Recovery
 
-Compaction is **lossy for prompt context** but the full raw history remains in the JSONL session file. Use `/tree` to revisit older branches or pre-compaction points. Extension `pi-vcc` adds search over compacted history via `/pi-vcc-recall`.
+Compaction is **lossy for prompt context** but the full raw history remains in the JSONL session file. Use `/tree` to revisit older branches or pre-compaction points.
 
 ## Export & Share
 

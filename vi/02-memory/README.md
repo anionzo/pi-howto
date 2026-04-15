@@ -1,64 +1,66 @@
-# Memory & Context Files
+# Bộ nhớ và tệp ngữ cảnh
 
-Phần này giải thích cách pi nạp instruction và quản lý context.
+Phần này giải thích cách pi nạp hướng dẫn, lưu lịch sử làm việc và dùng cài đặt để quản lý ngữ cảnh.
 
-## “Memory” trong pi là gì?
+## “Bộ nhớ” trong pi là gì?
 
-Trong pi, memory chủ yếu gồm:
+Trong pi, bộ nhớ chủ yếu là sự kết hợp của:
 
-1. **Instruction files** (định hướng hành vi agent)
-2. **Session history** (lịch sử hội thoại)
-3. **Runtime settings** (cấu hình load tài nguyên + hành vi)
+1. **Tệp hướng dẫn** — quy định agent nên hành xử thế nào
+2. **Lịch sử phiên làm việc** — những gì đã diễn ra trong cuộc hội thoại
+3. **Cài đặt runtime** — quyết định pi tải gì và hoạt động ra sao
 
-## Instruction Files
+## Các tệp hướng dẫn
 
 ### `AGENTS.md` / `CLAUDE.md`
 
-Pi load `AGENTS.md` (hoặc `CLAUDE.md`) theo thứ tự:
+Pi nạp `AGENTS.md` (hoặc `CLAUDE.md`) theo thứ tự:
 
-1. `~/.pi/agent/AGENTS.md` (global)
-2. các thư mục cha (đi ngược từ thư mục hiện tại)
+1. `~/.pi/agent/AGENTS.md` (toàn cục)
+2. các thư mục cha khi đi ngược từ thư mục hiện tại
 3. thư mục hiện tại
 
-Các file khớp sẽ được gộp vào context.
+Các tệp khớp sẽ được ghép vào ngữ cảnh.
 
-Dùng cho:
-- conventions của repo
-- coding standards
+Nên dùng các tệp này cho:
+- quy ước của repo
+- tiêu chuẩn mã nguồn
 - ghi chú kiến trúc
 - quy tắc an toàn
-- lệnh thường dùng
+- các lệnh thường dùng của dự án
 
 ### `SYSTEM.md`
 
-Dùng để **thay thế** default system prompt.
+Dùng để **thay thế** toàn bộ system prompt mặc định.
 
-| Path | Scope |
-|------|-------|
-| `~/.pi/agent/SYSTEM.md` | Global |
-| `.pi/SYSTEM.md` | Project |
+| Đường dẫn | Phạm vi |
+|-----------|---------|
+| `~/.pi/agent/SYSTEM.md` | Toàn cục |
+| `.pi/SYSTEM.md` | Theo project |
+
+Chỉ nên dùng khi bạn thật sự muốn kiểm soát hoàn toàn hành vi nền của agent.
 
 ### `APPEND_SYSTEM.md`
 
-Dùng để **nối thêm** vào default system prompt.
+Dùng để **nối thêm** hướng dẫn vào system prompt mặc định.
 
-| Path | Scope |
-|------|-------|
-| `~/.pi/agent/APPEND_SYSTEM.md` | Global |
-| `.pi/APPEND_SYSTEM.md` | Project |
+| Đường dẫn | Phạm vi |
+|-----------|---------|
+| `~/.pi/agent/APPEND_SYSTEM.md` | Toàn cục |
+| `.pi/APPEND_SYSTEM.md` | Theo project |
 
-Thường an toàn hơn `SYSTEM.md` vì không ghi đè toàn bộ prompt gốc.
+Cách này thường an toàn hơn `SYSTEM.md` vì không ghi đè toàn bộ prompt gốc.
 
-## Runtime Settings
+## Cài đặt runtime
 
-| Path | Scope |
-|------|-------|
-| `~/.pi/agent/settings.json` | Global |
-| `.pi/settings.json` | Project override |
+| Đường dẫn | Phạm vi |
+|-----------|---------|
+| `~/.pi/agent/settings.json` | Toàn cục |
+| `.pi/settings.json` | Ghi đè theo project |
 
-Project settings sẽ override global.
+Cài đặt của project sẽ ghi đè cài đặt toàn cục.
 
-Ví dụ:
+Ví dụ các thiết lập ảnh hưởng đến việc nạp ngữ cảnh:
 
 ```json
 {
@@ -69,15 +71,15 @@ Ví dụ:
 }
 ```
 
-## Session Memory
+## Bộ nhớ phiên làm việc
 
-Pi lưu session dạng JSONL (có tree branch).
+Pi lưu session dưới dạng tệp JSONL với cấu trúc phân nhánh.
 
-- Session nằm ở `~/.pi/agent/sessions/`
-- Dùng `/resume`, `/tree`, `/fork` để điều hướng lịch sử
-- Dùng `/compact` khi context quá dài
+- Tệp session nằm trong `~/.pi/agent/sessions/`
+- Dùng `/resume`, `/tree`, `/fork` để mở lại hoặc tách nhánh lịch sử
+- Dùng `/compact` để tóm tắt bớt ngữ cảnh cũ khi phiên quá dài
 
-CLI hay dùng:
+Một số cờ CLI hay dùng:
 
 ```bash
 pi -c
@@ -87,29 +89,35 @@ pi --session <path>
 pi --fork <path>
 ```
 
-## Best Practices
+## Cách dùng nên ưu tiên
 
-1. Giữ `AGENTS.md` ngắn, rõ, thực dụng.
-2. Ưu tiên `APPEND_SYSTEM.md` trước khi thay hẳn bằng `SYSTEM.md`.
-3. Hành vi tái sử dụng nên đưa vào skills/extensions.
-4. Session dài thì compact sớm.
-5. Cấu hình theo project nên đặt ở `.pi/settings.json`.
+1. Giữ `AGENTS.md` ngắn, rõ và thực dụng.
+2. Ưu tiên `APPEND_SYSTEM.md` trước khi ghi đè toàn bộ bằng `SYSTEM.md`.
+3. Đưa hành vi tái sử dụng vào skills hoặc extensions thay vì dồn hết vào prompt dài.
+4. Dùng `/compact` khi session kéo dài quá nhiều.
+5. Giữ cấu hình riêng của project trong `.pi/settings.json`.
 
 ## Lỗi thường gặp
 
-- Nhồi quá nhiều rule vào một prompt dài
-- Ghi đè `SYSTEM.md` dù chỉ cần append
-- Quên mất project settings override global
-- Không dùng `/tree` và `/fork` nên mất nhánh làm việc hữu ích
+- Nhồi quá nhiều chính sách vào một system prompt quá dài
+- Ghi đè `SYSTEM.md` dù chỉ cần nối thêm hướng dẫn
+- Quên rằng project settings ghi đè global settings
+- Không tận dụng `/tree` và `/fork`, làm mất các nhánh làm việc hữu ích
 
-## Quick Reference
+## Tóm tắt nhanh
 
-| File | Vai trò |
-|------|---------|
-| `AGENTS.md` | Hướng dẫn và conventions của project |
-| `CLAUDE.md` | File tương thích thay cho `AGENTS.md` |
-| `SYSTEM.md` | Thay thế default system prompt |
-| `APPEND_SYSTEM.md` | Nối thêm vào system prompt |
+| Tệp | Vai trò |
+|-----|---------|
+| `AGENTS.md` | Hướng dẫn và quy ước của dự án |
+| `CLAUDE.md` | Tệp tương thích thay cho `AGENTS.md` |
+| `SYSTEM.md` | Thay thế system prompt mặc định |
+| `APPEND_SYSTEM.md` | Nối thêm hướng dẫn vào system prompt |
 | `settings.json` | Cấu hình runtime |
 
-Xem bản đầy đủ: [../../02-memory/README.md](../../02-memory/README.md)
+## Đọc tiếp
+
+- [01-commands](../01-commands/README.md)
+- [03-skills](../03-skills/README.md)
+- [06-sessions](../06-sessions/README.md)
+- [09-settings](../09-settings/README.md)
+- Bản đầy đủ tiếng Anh: [../../02-memory/README.md](../../02-memory/README.md)

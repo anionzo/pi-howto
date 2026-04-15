@@ -14,7 +14,7 @@ A compact catalog of the main pi capabilities and where to read more.
 | Tree navigation | `/tree`, `/fork` | Branch and revisit history |
 | Compaction | `/compact` | Manually summarize old context |
 | Export/share | `/copy`, `/export`, `/share` | Reuse or publish output |
-| Runtime reload | `/reload` | Reload extensions, skills, prompts, context |
+| Runtime reload | `/reload` | Reload extensions, skills, prompts, and context |
 | Discovery | `/hotkeys`, `/changelog`, `/quit` | Learn and exit |
 
 ### CLI controls
@@ -36,11 +36,10 @@ Read more: [01-commands](01-commands/README.md)
 | Feature | Files / tools | Notes |
 |--------|----------------|-------|
 | Repo instructions | `AGENTS.md`, `CLAUDE.md` | Startup guidance |
-| Canonical repo memory | `KNOWNS.md` | Source of truth in Knowns-style repos |
 | Replace system prompt | `SYSTEM.md` | Strongest prompt override |
 | Append system prompt | `APPEND_SYSTEM.md` | Additive prompt layer |
 | Runtime config | `settings.json` | Behavior and resource loading |
-| Task/doc memory | `knowns ...`, `mcp__knowns__*` | Structured workflow memory |
+| Session context | `/resume`, `/tree`, `/compact` | Revisit, branch, and shrink history |
 
 Read more: [02-memory](02-memory/README.md)
 
@@ -52,7 +51,7 @@ Read more: [02-memory](02-memory/README.md)
 | Skill command | `/skill:name` |
 | Locations | global, project, packages, settings, CLI |
 | Validation | Agent Skills standard, lenient warnings |
-| Built-in workflow | `kn-init`, `kn-plan`, `kn-implement`, `kn-verify`, etc. |
+| Workflow packs | Repo-specific or package-provided skills can define reusable workflows |
 
 Read more: [03-skills](03-skills/README.md)
 
@@ -146,6 +145,17 @@ Read more: [09-settings](09-settings/README.md)
 | Enable/disable | `pi config` |
 
 Read more: [10-pi-packages](10-pi-packages/README.md)
+
+## Prompt Templates
+
+| Feature | Notes |
+|--------|-------|
+| Reusable prompts | Markdown files expanded as slash commands |
+| Arguments | `{{name}}` placeholders prompt for values |
+| Locations | global, project, packages, CLI |
+| Best use cases | review, explain, summarize, commit prep |
+
+Read more: [11-prompt-templates](11-prompt-templates/README.md)
 
 ## Supporting Files
 

@@ -1,13 +1,16 @@
-# Providers & Models
+# Nhà cung cấp và mô hình
 
-Pi hỗ trợ 2 nhóm chính:
-- subscription providers qua OAuth (`/login`)
-- API key providers qua env vars hoặc `auth.json`
+Pi hỗ trợ hai nhóm chính:
+- nhà cung cấp dùng subscription qua OAuth (`/login`)
+- nhà cung cấp dùng API key qua biến môi trường hoặc `auth.json`
 
-## Subscription providers
+## 1) Đăng nhập bằng `/login`
 
-- Claude Pro / Max
-- ChatGPT Plus / Pro (Codex)
+Dùng cách này khi provider hỗ trợ OAuth hoặc subscription-backed access.
+
+Các subscription được hỗ trợ gồm:
+- Anthropic Claude Pro / Max
+- OpenAI ChatGPT Plus / Pro (Codex)
 - GitHub Copilot
 - Google Gemini CLI
 - Google Antigravity
@@ -17,9 +20,32 @@ pi
 /login
 ```
 
-## API key providers
+Dùng `/logout` để xóa thông tin đăng nhập đã lưu.
 
-Một số env vars phổ biến:
+## 2) Dùng API key
+
+Bạn có thể đặt API key bằng biến môi trường hoặc lưu trong `~/.pi/agent/auth.json`.
+
+### Ví dụ biến môi trường
+
+Ví dụ với OpenAI:
+
+**macOS/Linux**
+
+```bash
+export OPENAI_API_KEY="sk-..."
+pi
+```
+
+**Windows PowerShell**
+
+```powershell
+$env:OPENAI_API_KEY="sk-..."
+pi
+```
+
+### Một số biến môi trường phổ biến
+
 - `ANTHROPIC_API_KEY`
 - `OPENAI_API_KEY`
 - `AZURE_OPENAI_API_KEY`
@@ -31,7 +57,9 @@ Một số env vars phổ biến:
 - `OPENROUTER_API_KEY`
 - `HF_TOKEN`
 
-## auth.json
+## `auth.json`
+
+Thông tin xác thực được lưu tại:
 
 ```text
 ~/.pi/agent/auth.json
@@ -42,26 +70,37 @@ Ví dụ:
 ```json
 {
   "anthropic": { "type": "api_key", "key": "sk-ant-..." },
-  "openai": { "type": "api_key", "key": "sk-..." }
+  "openai": { "type": "api_key", "key": "sk-..." },
+  "google": { "type": "api_key", "key": "..." }
 }
 ```
 
+Trường `key` có thể là:
+- giá trị literal
+- tên biến môi trường
+- shell command bắt đầu bằng `!`
+
+OAuth token sinh ra từ `/login` cũng được lưu ở đây và làm mới tự động khi cần.
+
 ## Chọn model
 
+### Trong giao diện tương tác
 - `/model`
 - `/scoped-models`
 - `Ctrl+P` / `Shift+Ctrl+P`
 - `Ctrl+L`
 
-CLI:
+### Trên CLI
 
 ```bash
 pi --provider openai --model gpt-4o
 pi --model openai/gpt-4o
 pi --model sonnet:high
+pi --models "claude-*,gpt-4o"
+pi --list-models
 ```
 
-## Cloud providers
+## Nhà cung cấp đám mây
 
 ### Azure OpenAI
 - `AZURE_OPENAI_API_KEY`
@@ -76,23 +115,40 @@ pi --model sonnet:high
 - `AWS_BEARER_TOKEN_BEDROCK`
 - `AWS_REGION`
 
-### Vertex AI
+Ví dụ chạy:
+
+```bash
+pi --provider amazon-bedrock --model us.anthropic.claude-sonnet-4-20250514-v1:0
+```
+
+### Google Vertex AI
 - `gcloud auth application-default login`
 - `GOOGLE_CLOUD_PROJECT`
 - `GOOGLE_CLOUD_LOCATION`
+- hoặc `GOOGLE_APPLICATION_CREDENTIALS`
 
-## Credential resolution order
+## Thứ tự phân giải thông tin xác thực
 
+Pi ưu tiên theo thứ tự:
 1. `--api-key`
 2. `auth.json`
-3. environment variable
-4. `models.json`
+3. biến môi trường
+4. khóa từ `models.json`
 
-## Custom Providers qua `models.json`
+## Nhà cung cấp tùy chỉnh qua `models.json`
 
-File: `~/.pi/agent/models.json` — reload tự động khi mở `/model`, không cần restart.
+File: `~/.pi/agent/models.json`
 
-### Ollama (ví dụ nhanh nhất)
+Dùng cách này khi provider nói một API tương thích mà pi đã hỗ trợ sẵn. File sẽ được nạp lại khi bạn mở `/model`, không cần restart.
+
+### API hỗ trợ
+
+- `openai-completions`
+- `openai-responses`
+- `anthropic-messages`
+- `google-generative-ai`
+
+### Ví dụ tối thiểu với Ollama
 
 ```json
 {
@@ -110,24 +166,7 @@ File: `~/.pi/agent/models.json` — reload tự động khi mở `/model`, khôn
 }
 ```
 
-### OpenRouter
-
-```json
-{
-  "providers": {
-    "openrouter": {
-      "baseUrl": "https://openrouter.ai/api/v1",
-      "apiKey": "OPENROUTER_API_KEY",
-      "api": "openai-completions",
-      "models": [
-        { "id": "anthropic/claude-3.5-sonnet", "name": "Claude 3.5 (OpenRouter)" }
-      ]
-    }
-  }
-}
-```
-
-### Proxy provider có sẵn
+### Proxy cho provider có sẵn
 
 ```json
 {
@@ -139,8 +178,18 @@ File: `~/.pi/agent/models.json` — reload tự động khi mở `/model`, khôn
 }
 ```
 
-Giữ nguyên tất cả model built-in, chỉ đổi endpoint.
+## Khi nào nên dùng tiện ích mở rộng?
 
-Chi tiết đầy đủ (model fields, compat, API key resolution): xem [bản English](../../08-providers/README.md#custom-providers).
+Nếu bạn cần:
+- OAuth flow riêng
+- giao thức streaming không chuẩn
+- logic xác thực đặc thù cho doanh nghiệp
+- proxy nội bộ phức tạp
 
-Xem bản đầy đủ: [../../08-providers/README.md](../../08-providers/README.md)
+thì nên dùng extension thay vì chỉ `models.json`.
+
+## Đọc tiếp
+
+- [09-settings](../09-settings/README.md)
+- [10-pi-packages](../10-pi-packages/README.md)
+- Bản đầy đủ tiếng Anh: [../../08-providers/README.md](../../08-providers/README.md)

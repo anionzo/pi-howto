@@ -1,6 +1,6 @@
 # Assets
 
-Logo và resources cho pi-howto.
+Logos and static resources for `pi-howto`.
 
 ## Logo
 

@@ -1,59 +1,106 @@
-# Extensions
+# Tiện ích mở rộng
 
-Extensions là module TypeScript mở rộng pi.
+Tiện ích mở rộng (extensions) là các module TypeScript giúp mở rộng hành vi của pi. Chúng có thể đăng ký công cụ mới, thêm lệnh, móc vào vòng đời chạy của agent và dựng giao diện tùy chỉnh.
 
-## Extensions có thể làm gì?
+## Tiện ích mở rộng có thể làm gì?
 
-- đăng ký custom tools
-- chặn / sửa tool calls
-- thêm slash commands
-- thêm keyboard shortcuts
-- thêm CLI flags
-- hook vào lifecycle events
-- tạo custom UI
-- lưu state qua session entries
-- thêm custom providers
+- đăng ký công cụ mới bằng `pi.registerTool()`
+- chặn hoặc sửa `tool_call`
+- thêm slash command như `/deploy` hoặc `/review`
+- thêm phím tắt và cờ CLI
+- móc vào các sự kiện của session, agent, tool và model
+- dựng UI tùy chỉnh bằng thông báo, hộp thoại, widget hoặc TUI component
+- lưu trạng thái vào session
+- đăng ký provider tùy chỉnh hoặc ghi đè cấu hình provider
 
-## Vị trí đặt extension
+## Bắt đầu nhanh
+
+Tạo file `~/.pi/agent/extensions/my-extension.ts`:
+
+```typescript
+import type { ExtensionAPI } from "@mariozechner/pi-coding-agent";
+
+export default function (pi: ExtensionAPI) {
+  pi.registerCommand("hello", {
+    description: "Say hello",
+    handler: async (_args, ctx) => {
+      ctx.ui.notify("Hello!", "success");
+    }
+  });
+}
+```
+
+Chạy thử:
+
+```bash
+pi -e ~/.pi/agent/extensions/my-extension.ts
+```
+
+Hoặc đặt đúng thư mục rồi chạy `pi` bình thường và dùng `/reload` sau khi sửa file.
+
+## Vị trí nạp extension
+
+> **Bảo mật:** Extensions chạy như mã hệ thống thật. Chỉ cài từ nguồn bạn tin tưởng.
 
 - `~/.pi/agent/extensions/*.ts`
 - `~/.pi/agent/extensions/*/index.ts`
 - `.pi/extensions/*.ts`
 - `.pi/extensions/*/index.ts`
-- `-e` / `--extension <path>` để test nhanh
+- `--extension <path>` hoặc `-e`
+- package pi có khai báo `extensions`
 
-## Imports hay dùng
+Bạn cũng có thể thêm đường dẫn trong `settings.json` qua trường `extensions`.
+
+## Các package import hay dùng
 
 - `@mariozechner/pi-coding-agent`
 - `@sinclair/typebox`
 - `@mariozechner/pi-ai`
 - `@mariozechner/pi-tui`
+- các package built-in của Node như `node:fs`, `node:path`
 
 ## API quan trọng
 
-- `pi.on()`
-- `pi.registerTool()`
-- `pi.registerCommand()`
-- `pi.registerShortcut()`
-- `pi.registerFlag()`
-- `pi.sendMessage()`
-- `pi.sendUserMessage()`
-- `pi.appendEntry()`
-- `pi.registerProvider()`
+- `pi.on()` — đăng ký handler cho sự kiện
+- `pi.registerTool()` — tạo tool cho model gọi
+- `pi.registerCommand()` — tạo slash command
+- `pi.registerShortcut()` — tạo phím tắt
+- `pi.registerFlag()` — thêm cờ CLI
+- `pi.sendMessage()` / `pi.sendUserMessage()` — chèn message vào session
+- `pi.appendEntry()` — lưu trạng thái vào session
+- `pi.registerProvider()` — thêm provider tùy chỉnh
 
-## Events nổi bật
+## Các sự kiện nổi bật
 
-- `session_start`
+### Sự kiện tài nguyên
 - `resources_discover`
-- `input`
-- `before_agent_start`
-- `tool_call`
-- `tool_result`
+
+### Sự kiện session
+- `session_start`
+- `session_before_fork`
 - `session_before_compact`
 - `session_before_tree`
-- `model_select`
+- `session_shutdown`
 
-## UI helpers
+### Sự kiện agent
+- `input`
+- `before_agent_start`
+- `agent_start`
+- `turn_start`
+- `context`
+- `before_provider_request`
+- `agent_end`
+
+### Sự kiện tool
+- `tool_execution_start`
+- `tool_call`
+- `tool_result`
+- `tool_execution_end`
+- `user_bash`
+
+## Hỗ trợ UI
+
+Trong handler, bạn thường dùng `ctx.ui` để dựng giao diện:
 
 - `ctx.ui.notify()`
 - `ctx.ui.confirm()`
@@ -63,4 +110,16 @@ Extensions là module TypeScript mở rộng pi.
 - `ctx.ui.setWidget()`
 - `ctx.ui.custom()`
 
-Xem bản đầy đủ: [../../04-extensions/README.md](../../04-extensions/README.md)
+## Ghi nhớ quan trọng
+
+- Đặt canonical state vào session để việc phân nhánh và `/reload` vẫn đúng
+- Với tool sửa file, nên phối hợp với hàng đợi mutation để tránh đụng độ với `edit` và `write`
+- Tôn trọng `ctx.signal` để xử lý hủy tác vụ đúng cách
+- Khi phát triển thường xuyên, dùng thư mục auto-discover + `/reload` sẽ tiện hơn khởi động lại pi
+
+## Đọc tiếp
+
+- [03-skills](../03-skills/README.md)
+- [05-themes](../05-themes/README.md)
+- [06-sessions](../06-sessions/README.md)
+- Bản đầy đủ tiếng Anh: [../../04-extensions/README.md](../../04-extensions/README.md)
