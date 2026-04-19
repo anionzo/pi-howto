@@ -101,6 +101,31 @@ Ví dụ:
 - compaction là cơ chế tóm tắt có cấu trúc, không phải xóa mù quáng
 - nếu cần xem lại lịch sử cũ, hãy quay lại qua `/tree`
 
+## CI và môi trường team
+
+### Session tạm trong CI
+
+```bash
+# Trong CI, tắt lưu session
+pi --no-session -p "query"
+```
+
+### Thư mục session chung cho team
+
+Lưu session trong thư mục project và chia sẻ qua settings:
+
+```json
+{
+  "sessionDir": ".pi/sessions"
+}
+```
+
+Thêm `.pi/sessions/` vào `.gitignore` để không commit session lên repo.
+
+### Compaction và điều hướng `/tree`
+
+Khi dùng `/tree` để quay về điểm trước khi compaction xảy ra, bạn nhìn thấy lịch sử JSONL đầy đủ. Nhưng nếu tiếp tục hội thoại từ điểm đó, ngữ cảnh LLM nhận sẽ được **xây lại từ bản tóm tắt compaction**, không phải từ raw messages. Bản tóm tắt là những gì model "nhớ".
+
 ## Đọc tiếp
 
 - [07-keybindings](../07-keybindings/README.md)

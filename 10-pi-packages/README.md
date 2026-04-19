@@ -237,6 +237,16 @@ Identity is determined by:
 - git: repository URL without ref
 - local: resolved absolute path
 
+## Gallery
+
+Browse community packages at [shittycodingagent.ai/packages](https://shittycodingagent.ai/packages) — packages tagged `pi-package` appear there.
+
+### Install a popular package
+
+```bash
+pi install git:github.com/badlogic/pi-skills  # web search, browser, Google APIs
+```
+
 ## Security
 
 > **Warning:** Pi packages run with full system access. Extensions can execute arbitrary code and skills can instruct the model to run commands. Review source before installing third-party packages.

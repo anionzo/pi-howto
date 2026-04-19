@@ -12,13 +12,23 @@ In pi, memory is mostly a combination of:
 
 ## Instruction Files
 
-### `AGENTS.md` / `CLAUDE.md`
+### `AGENTS.md` / `CLAUDE.md` / `OPENCODE.md` / `GEMINI.md`
 
-Pi loads `AGENTS.md` (or `CLAUDE.md`) at startup from:
+Pi loads `AGENTS.md` at startup, and also recognizes compatibility alternatives from other harnesses: `CLAUDE.md`, `OPENCODE.md`, and `GEMINI.md`.
+
+Loading order (all files are **concatenated in this order**, not overridden):
 
 1. `~/.pi/agent/AGENTS.md` (global)
-2. Parent directories (walking up from current working directory)
+2. Parent directories, walking up from current working directory (ancestors)
 3. Current directory
+
+Example for a project at `/home/user/projects/myapp`:
+
+```text
+~/.pi/agent/AGENTS.md              <- load 1st (global)
+/home/user/projects/AGENTS.md      <- load 2nd (ancestor)
+/home/user/projects/myapp/AGENTS.md <- load 3rd (current dir)
+```
 
 All matching files are concatenated and added to context.
 
@@ -112,6 +122,8 @@ pi --fork <path>     # fork session into a new one
 |------|---------|
 | `AGENTS.md` | Project instructions and conventions |
 | `CLAUDE.md` | Compatibility alternative to `AGENTS.md` |
+| `OPENCODE.md` | Compatibility alternative (OpenCode harness) |
+| `GEMINI.md` | Compatibility alternative (Gemini harness) |
 | `SYSTEM.md` | Replace default system prompt |
 | `APPEND_SYSTEM.md` | Append extra instructions |
 | `settings.json` | Runtime configuration |

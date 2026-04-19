@@ -97,6 +97,16 @@ pi config
 
 Bạn có thể bật/tắt extension, skill, prompt và theme từ package đã cài.
 
+## Thư viện package cộng đồng
+
+Duyệt package tại [shittycodingagent.ai/packages](https://shittycodingagent.ai/packages) — package gắn tag `pi-package` sẽ hiển thị ở đây.
+
+### Cài package phổ biến
+
+```bash
+pi install git:github.com/badlogic/pi-skills  # web search, browser, Google APIs
+```
+
 ## Bảo mật
 
 > **Cảnh báo:** Gói pi có thể chạy mã với toàn quyền trên hệ thống. Extensions có thể thực thi mã tùy ý và skills có thể hướng dẫn model chạy lệnh. Chỉ cài từ nguồn bạn tin tưởng.

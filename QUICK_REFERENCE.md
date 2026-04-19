@@ -39,10 +39,24 @@ pi --no-session              # ephemeral mode
 pi --session <path-or-id>    # open a session
 pi --fork <path-or-id>       # fork a session
 pi --model openai/gpt-4o     # choose model
-pi --thinking high           # choose thinking level
+pi --thinking high           # choose thinking level (off/minimal/low/medium/high/xhigh)
 pi -p "Summarize this"       # print mode
-pi --mode rpc                # RPC mode
+pi --mode json               # JSON event stream
+pi --mode rpc                # RPC mode (JSON protocol via stdin/stdout)
+pi --no-skills               # disable skill discovery
+pi --no-themes               # disable theme discovery
+pi --no-prompt-templates     # disable prompt template discovery
+pi --list-models claude      # list models matching query
 ```
+
+## Operating Modes
+
+| Mode | Command | `ctx.hasUI` |
+|------|---------|-------------|
+| Interactive | `pi` | `true` |
+| Print | `pi -p "query"` | `false` |
+| JSON | `pi -p "query" --mode json` | `false` |
+| RPC | `pi --mode rpc` | `true` |
 
 ## Common Shortcuts
 
@@ -112,3 +126,4 @@ pi config
 - [01-commands](01-commands/README.md)
 - [06-sessions](06-sessions/README.md)
 - [09-settings](09-settings/README.md)
+- [12-headless-modes](12-headless-modes/README.md)

@@ -127,6 +127,8 @@ Rules:
 - dùng `~/.pi/agent/prompts/` cho shortcut cá nhân
 - có thể kết hợp template với skill khi workflow lặp lại có nhiều bước
 - không cần restart; template được nạp lại khi mở autocomplete
+- dùng `--no-prompt-templates` để tắt phát hiện template (đường dẫn chỉ định bằng `--prompt-template` vẫn hoạt động)
+- cú pháp tham số chính thức là dạng shell: `$1`, `$2`, `$@`. Một số tài liệu có thể đề cập `{{name}}` — cú pháp chuẩn là `$N`
 
 ## Đọc tiếp
 

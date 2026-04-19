@@ -83,7 +83,10 @@ Bạn cũng có thể thêm đường dẫn trong `settings.json` qua trường 
 - `session_shutdown`
 
 ### Sự kiện agent
-- `input`
+
+> **`event.source` trong sự kiện `input`:** Kiểm tra `event.source` để phân biệt input từ `"interactive"`, `"rpc"` hay `"extension"`. Quan trọng khi xây extension chạy cả ở headless lẫn interactive mode.
+
+- `input` — biến đổi input trước khi mở rộng skill/template. `event.source` là `"interactive"`, `"rpc"` hoặc `"extension"`
 - `before_agent_start`
 - `agent_start`
 - `turn_start`
@@ -113,13 +116,23 @@ Trong handler, bạn thường dùng `ctx.ui` để dựng giao diện:
 ## Ghi nhớ quan trọng
 
 - Đặt canonical state vào session để việc phân nhánh và `/reload` vẫn đúng
-- Với tool sửa file, nên phối hợp với hàng đợi mutation để tránh đụng độ với `edit` và `write`
+- Với tool sửa file, dùng `withFileMutationQueue()` (import từ `@mariozechner/pi-coding-agent`) để phối hợp với `edit` và `write`
 - Tôn trọng `ctx.signal` để xử lý hủy tác vụ đúng cách
 - Khi phát triển thường xuyên, dùng thư mục auto-discover + `/reload` sẽ tiện hơn khởi động lại pi
+
+### Hành vi `ctx` theo chế độ
+
+| Phương thức | Interactive | RPC | Print |
+|-------------|-------------|-----|-------|
+| `ctx.hasUI` | `true` | `true` | `false` |
+| `ctx.shutdown()` | trì hoãn đến idle | trì hoãn đến idle tiếp theo | không làm gì |
+| `ctx.ui.notify()` | hiện trong TUI | phát RPC request | không làm gì |
 
 ## Đọc tiếp
 
 - [03-skills](../03-skills/README.md)
 - [05-themes](../05-themes/README.md)
 - [06-sessions](../06-sessions/README.md)
+- [12-headless-modes](../12-headless-modes/README.md)
+- Ví dụ chính thức: [`examples/extensions/`](https://github.com/badlogic/pi-mono/blob/main/packages/coding-agent/examples/extensions/README.md)
 - Bản đầy đủ tiếng Anh: [../../04-extensions/README.md](../../04-extensions/README.md)

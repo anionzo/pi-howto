@@ -157,6 +157,17 @@ Read more: [10-pi-packages](10-pi-packages/README.md)
 
 Read more: [11-prompt-templates](11-prompt-templates/README.md)
 
+## Headless Modes
+
+| Mode | Flag | Use case |
+|------|------|----------|
+| Print | `pi -p "query"` | One-shot text to stdout |
+| JSON | `pi --mode json` | Stream JSONL events |
+| RPC | `pi --mode rpc --no-session` | JSON protocol via stdin/stdout |
+| SDK | programmatic API | Embed pi in Node.js apps |
+
+Read more: [12-headless-modes](12-headless-modes/README.md)
+
 ## Supporting Files
 
 | File | Purpose |

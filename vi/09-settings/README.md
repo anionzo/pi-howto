@@ -52,8 +52,8 @@ Bạn có thể sửa trực tiếp hoặc dùng `/settings` cho các tùy chọ
 - `images.autoResize`
 - `images.blockImages`
 - `shellPath`
-- `shellCommandPrefix`
-- `npmCommand`
+- `shellCommandPrefix` — prefix cho mọi lệnh bash, hữu ích trong Docker/devcontainer
+- `npmCommand` — wrapper cho npm, dùng khi cần pin Node version qua `nvm`, `fnm` hoặc `mise`
 
 ### Session và tài nguyên
 - `sessionDir`
@@ -78,7 +78,9 @@ Bạn có thể sửa trực tiếp hoặc dùng `/settings` cho các tùy chọ
     "reserveTokens": 16384,
     "keepRecentTokens": 20000
   },
-  "enabledModels": ["claude-*", "gpt-4o"]
+  "enabledModels": ["claude-*", "gpt-4o"],
+  "shellCommandPrefix": "docker exec my-container",
+  "npmCommand": ["fnm", "exec", "--using=20", "npm"]
 }
 ```
 

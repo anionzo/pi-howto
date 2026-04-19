@@ -82,6 +82,19 @@ Ví dụ:
 }
 ```
 
+## Xung đột phím tắt mặc định
+
+`Ctrl+P` được gán cho cả `app.model.cycleForward` và `app.session.togglePath`. Phím nào kích hoạt phụ thuộc vào ngữ cảnh — `togglePath` chỉ hoạt động trong `/resume`, còn `cycleForward` hoạt động trong editor chính.
+
+Một số terminal cũng dùng `Ctrl+P` cho lịch sử lệnh. Nếu bị xung đột, hãy gán lại:
+
+```json
+{
+  "app.model.cycleForward": ["ctrl+shift+m"],
+  "app.model.cycleBackward": ["shift+ctrl+shift+m"]
+}
+```
+
 ## Một số phím tắt hay dùng
 
 - `Ctrl+L` — mở bảng chọn model

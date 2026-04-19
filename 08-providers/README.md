@@ -393,6 +393,7 @@ Key compat fields:
 | `supportsReasoningEffort` | `false` → don't send `reasoning_effort` |
 | `maxTokensField` | `"max_tokens"` or `"max_completion_tokens"` |
 | `thinkingFormat` | `"reasoning_effort"`, `"qwen"`, `"zai"` |
+| `requiresToolResultName` | `true` → include `name` field in tool results (required by some providers) |
 | `openRouterRouting` | Provider routing preferences for OpenRouter |
 
 ### Via extensions
@@ -446,6 +447,10 @@ Try:
 - `/logout` then `/login` again
 - verifying browser login completed successfully
 - checking corporate proxies or SSO restrictions
+
+### Additional sharing packages
+
+- `pi-share-hf` — share sessions to Hugging Face instead of GitHub Gist. Install via `pi install npm:pi-share-hf`.
 
 ## Related
 

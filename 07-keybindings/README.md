@@ -147,6 +147,19 @@ Older non-namespaced config IDs are migrated automatically on startup.
 | `Ctrl+T` | Expand/collapse thinking |
 | `Ctrl+G` | External editor |
 
+## Known Default Conflicts
+
+`Ctrl+P` is bound to both `app.model.cycleForward` and `app.session.togglePath`. The binding that fires depends on context — `togglePath` only applies inside the `/resume` selector, while `cycleForward` applies in the main editor.
+
+Some terminals also capture `Ctrl+P` for command history. If you experience conflicts, rebind model cycling:
+
+```json
+{
+  "app.model.cycleForward": ["ctrl+shift+m"],
+  "app.model.cycleBackward": ["shift+ctrl+shift+m"]
+}
+```
+
 ## Custom Configuration
 
 Create `~/.pi/agent/keybindings.json`:

@@ -33,15 +33,30 @@ pi
 ## Các cờ CLI thiết yếu
 
 ```bash
-pi -c
-pi -r
-pi --no-session
-pi --session <path-or-id>
-pi --fork <path-or-id>
-pi --model openai/gpt-4o
-pi --thinking high
-pi -p "Tóm tắt nội dung này"
+pi -c                          # tiếp tục session gần nhất
+pi -r                          # duyệt session
+pi --no-session                # chế độ tạm thời
+pi --session <path-or-id>      # mở session cụ thể
+pi --fork <path-or-id>         # fork session
+pi --model openai/gpt-4o       # chọn model
+pi --thinking high              # chọn mức thinking (off/minimal/low/medium/high/xhigh)
+pi -p "Tóm tắt nội dung này"   # print mode
+pi --mode json                  # JSON event stream
+pi --mode rpc                   # RPC mode (giao thức JSON qua stdin/stdout)
+pi --no-skills                  # tắt phát hiện skill
+pi --no-themes                  # tắt phát hiện theme
+pi --no-prompt-templates        # tắt phát hiện prompt template
+pi --list-models claude         # liệt kê model theo query
 ```
+
+## Bốn chế độ vận hành
+
+| Chế độ | Lệnh | `ctx.hasUI` |
+|--------|-------|-------------|
+| Interactive | `pi` | `true` |
+| Print | `pi -p "query"` | `false` |
+| JSON | `pi -p "query" --mode json` | `false` |
+| RPC | `pi --mode rpc` | `true` |
 
 ## Phím tắt thông dụng
 
@@ -111,3 +126,4 @@ pi config
 - [01-commands](01-commands/README.md)
 - [06-sessions](06-sessions/README.md)
 - [09-settings](09-settings/README.md)
+- [12-headless-modes](12-headless-modes/README.md)

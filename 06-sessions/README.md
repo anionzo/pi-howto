@@ -311,6 +311,31 @@ Similarly, `session_before_tree` intercepts branch summarization.
 
 Compaction is **lossy for prompt context** but the full raw history remains in the JSONL session file. Use `/tree` to revisit older branches or pre-compaction points.
 
+## CI & Team Environments
+
+### Ephemeral sessions in CI
+
+```bash
+# In CI, disable session saving
+pi --no-session -p "query"
+```
+
+### Team-shared session directory
+
+Store sessions in the project directory and share via settings:
+
+```json
+{
+  "sessionDir": ".pi/sessions"
+}
+```
+
+Add `.pi/sessions/` to `.gitignore` to avoid committing session files.
+
+### Compaction and `/tree` navigation
+
+When using `/tree` to navigate to a point before a compaction occurred, the full raw JSONL history is visible. However, if you continue the conversation from that point, the LLM context is **rebuilt from the compaction summary**, not from the raw messages. The summary is what the model "remembers."
+
 ## Export & Share
 
 ### Export to HTML

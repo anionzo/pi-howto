@@ -12,13 +12,23 @@ Trong pi, bộ nhớ chủ yếu là sự kết hợp của:
 
 ## Các tệp hướng dẫn
 
-### `AGENTS.md` / `CLAUDE.md`
+### `AGENTS.md` / `CLAUDE.md` / `OPENCODE.md` / `GEMINI.md`
 
-Pi nạp `AGENTS.md` (hoặc `CLAUDE.md`) theo thứ tự:
+Pi nạp `AGENTS.md` khi khởi động, đồng thời nhận dạng các file tương thích từ harness khác: `CLAUDE.md`, `OPENCODE.md` và `GEMINI.md`.
+
+Thứ tự nạp (tất cả được **ghép nối theo thứ tự**, không ghi đè):
 
 1. `~/.pi/agent/AGENTS.md` (toàn cục)
-2. các thư mục cha khi đi ngược từ thư mục hiện tại
-3. thư mục hiện tại
+2. Các thư mục cha khi đi ngược từ thư mục hiện tại
+3. Thư mục hiện tại
+
+Ví dụ cho project tại `/home/user/projects/myapp`:
+
+```text
+~/.pi/agent/AGENTS.md              <- nạp thứ 1 (toàn cục)
+/home/user/projects/AGENTS.md      <- nạp thứ 2 (thư mục cha)
+/home/user/projects/myapp/AGENTS.md <- nạp thứ 3 (thư mục hiện tại)
+```
 
 Các tệp khớp sẽ được ghép vào ngữ cảnh.
 
@@ -110,6 +120,8 @@ pi --fork <path>
 |-----|---------|
 | `AGENTS.md` | Hướng dẫn và quy ước của dự án |
 | `CLAUDE.md` | Tệp tương thích thay cho `AGENTS.md` |
+| `OPENCODE.md` | Tệp tương thích (OpenCode harness) |
+| `GEMINI.md` | Tệp tương thích (Gemini harness) |
 | `SYSTEM.md` | Thay thế system prompt mặc định |
 | `APPEND_SYSTEM.md` | Nối thêm hướng dẫn vào system prompt |
 | `settings.json` | Cấu hình runtime |

@@ -228,6 +228,8 @@ Themes may also define an optional `export` section for `/export` HTML output:
 }
 ```
 
+> **Tip:** If you frequently use `/share` to export sessions, define the `export` section so the HTML output matches your terminal theme visually.
+
 ## Color Value Formats
 
 Four formats are supported.
@@ -261,7 +263,7 @@ Four formats are supported.
 - **Light themes** need stronger text contrast and darker borders
 - Start from a consistent palette like Nord, Gruvbox, or Tokyo Night
 - Test markdown, tool diffs, long wrapped output, and thinking blocks
-- On VS Code terminals, `terminal.integrated.minimumContrastRatio = 1` gives more accurate colors
+- On VS Code terminals, set `terminal.integrated.minimumContrastRatio = 1` to get accurate colors. VS Code normally adjusts contrast automatically and overrides theme colors — this setting disables that override
 
 ## Using Themes in Extensions
 

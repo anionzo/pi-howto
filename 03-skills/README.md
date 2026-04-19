@@ -103,7 +103,7 @@ Per the [Agent Skills specification](https://agentskills.io/specification#frontm
 | `compatibility` | No | Max 500 chars. Environment requirements. |
 | `metadata` | No | Arbitrary key-value mapping. |
 | `allowed-tools` | No | Space-delimited list of pre-approved tools. |
-| `disable-model-invocation` | No | When `true`, the skill is hidden from automatic model invocation and must be called explicitly with `/skill:name`. |
+| `disable-model-invocation` | No | When `true`, the skill is hidden from automatic model invocation and must be called explicitly with `/skill:name`. Use this when a skill has dangerous side effects (API calls, file deletion) and should only be triggered manually. |
 
 ### Name rules
 
@@ -116,6 +116,20 @@ Per the [Agent Skills specification](https://agentskills.io/specification#frontm
 Valid: `pdf-processing`, `data-analysis`, `code-review`
 
 Invalid: `PDF-Processing`, `-pdf`, `pdf--processing`
+
+### Security example with `allowed-tools` and `disable-model-invocation`
+
+```yaml
+---
+name: deploy-prod
+description: Deploy to production. Only triggered manually via /skill:deploy-prod.
+allowed-tools: bash read
+disable-model-invocation: true
+---
+```
+
+- `allowed-tools` restricts which tools the model can use while this skill is active
+- `disable-model-invocation` ensures the skill is never auto-loaded by the model
 
 ## Validation
 
@@ -167,6 +181,8 @@ cd /path/to/brave-search && npm install
 
 - [Anthropic Skills](https://github.com/anthropics/skills) - Document processing and web development skills
 - [Pi Skills](https://github.com/badlogic/pi-skills) - Web search, browser automation, Google APIs, transcription
+- [Agent Skills Specification](https://agentskills.io/specification) - Full specification of frontmatter fields
+- [Community Packages Gallery](https://shittycodingagent.ai/packages) - Browse community-contributed skills and packages
 
 ## Related
 

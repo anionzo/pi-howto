@@ -188,6 +188,10 @@ Nếu bạn cần:
 
 thì nên dùng extension thay vì chỉ `models.json`.
 
+## Gói chia sẻ bổ sung
+
+- `pi-share-hf` — chia sẻ session lên Hugging Face thay vì GitHub Gist. Cài bằng `pi install npm:pi-share-hf`.
+
 ## Đọc tiếp
 
 - [09-settings](../09-settings/README.md)

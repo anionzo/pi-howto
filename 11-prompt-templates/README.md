@@ -190,3 +190,5 @@ Usage: `/test src/utils/parser.ts`
 - **Combine with skills** — a template can reference a skill: "Use the `/skill:code-review` workflow"
 - **No restart needed** — templates reload when you open the autocomplete menu
 - **Share with team** — put `.pi/prompts/` in version control
+- **Disable in headless** — use `--no-prompt-templates` to skip template discovery (explicit `--prompt-template` paths still load)
+- **Argument syntax** — templates use `$1`, `$2`, `$@` etc. for positional arguments. Some documentation may reference `{{name}}` placeholders — the canonical syntax is the shell-style `$N` form

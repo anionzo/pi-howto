@@ -80,15 +80,24 @@ pi
 ## Useful CLI Options
 
 ```bash
-pi -c
-pi -r
-pi --no-session
-pi --session <path-or-id>
-pi --fork <path-or-id>
-pi --model openai/gpt-4o
-pi --thinking high
-pi -p "Summarize this"
+pi -c                          # continue recent session
+pi -r                          # browse sessions
+pi --no-session                # ephemeral mode
+pi --session <path-or-id>      # open specific session
+pi --fork <path-or-id>         # fork a session
+pi --model openai/gpt-4o       # choose model
+pi --thinking high              # set thinking level (off/minimal/low/medium/high/xhigh)
+pi -p "Summarize this"          # print mode (text to stdout, then exit)
+pi --mode json                  # JSON event stream (JSONL to stdout)
+pi --mode rpc                   # RPC headless mode (JSON protocol via stdin/stdout)
+pi --no-skills                  # disable skill discovery
+pi --no-themes                  # disable theme discovery
+pi --no-prompt-templates        # disable prompt template discovery
+pi --list-models                # list available models
+pi --list-models claude         # filter models by query
 ```
+
+> **Note on `ctx.hasUI`:** In print mode and JSON mode, `ctx.hasUI` is `false`. In interactive and RPC mode, it is `true`. This is relevant for extension authors who need to know whether UI methods like `ctx.ui.notify()` will work. See [12-headless-modes](../12-headless-modes/README.md) for details.
 
 ## Common Pitfalls
 
@@ -102,3 +111,4 @@ pi -p "Summarize this"
 - [02-memory](../02-memory/README.md)
 - [06-sessions](../06-sessions/README.md)
 - [07-keybindings](../07-keybindings/README.md)
+- [12-headless-modes](../12-headless-modes/README.md)

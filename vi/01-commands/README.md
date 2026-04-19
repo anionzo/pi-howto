@@ -56,15 +56,24 @@ pi
 ## Tùy chọn CLI hay dùng
 
 ```bash
-pi -c
-pi -r
-pi --no-session
-pi --session <path-or-id>
-pi --fork <path-or-id>
-pi --model openai/gpt-4o
-pi --thinking high
-pi -p "Tóm tắt nội dung này"
+pi -c                          # tiếp tục session gần nhất
+pi -r                          # duyệt danh sách session
+pi --no-session                # chế độ tạm thời
+pi --session <path-or-id>      # mở session cụ thể
+pi --fork <path-or-id>         # fork session
+pi --model openai/gpt-4o       # chọn model
+pi --thinking high              # đặt mức thinking (off/minimal/low/medium/high/xhigh)
+pi -p "Tóm tắt nội dung này"   # print mode (xuất text ra stdout rồi thoát)
+pi --mode json                  # JSON event stream (JSONL ra stdout)
+pi --mode rpc                   # RPC headless mode (giao thức JSON qua stdin/stdout)
+pi --no-skills                  # tắt phát hiện skill
+pi --no-themes                  # tắt phát hiện theme
+pi --no-prompt-templates        # tắt phát hiện prompt template
+pi --list-models                # liệt kê model khả dụng
+pi --list-models claude         # lọc model theo query
 ```
+
+> **Lưu ý về `ctx.hasUI`:** Trong print mode và JSON mode, `ctx.hasUI` là `false`. Trong interactive và RPC mode, là `true`. Quan trọng cho người viết extension cần biết môi trường đang chạy. Xem [12-headless-modes](../12-headless-modes/README.md).
 
 ## Phím tắt tương tác quan trọng
 
@@ -102,4 +111,5 @@ pi -p "Tóm tắt nội dung này"
 - [02-memory](../02-memory/README.md)
 - [06-sessions](../06-sessions/README.md)
 - [07-keybindings](../07-keybindings/README.md)
+- [12-headless-modes](../12-headless-modes/README.md)
 - Bản đầy đủ tiếng Anh: [../../01-commands/README.md](../../01-commands/README.md)

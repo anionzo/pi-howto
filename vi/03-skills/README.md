@@ -103,7 +103,7 @@ Theo [chuẩn Agent Skills](https://agentskills.io/specification#frontmatter-req
 | `compatibility` | Không | Tối đa 500 ký tự. Yêu cầu môi trường. |
 | `metadata` | Không | Dữ liệu tùy ý dạng key-value. |
 | `allowed-tools` | Không | Danh sách công cụ được duyệt trước, phân tách bằng khoảng trắng. |
-| `disable-model-invocation` | Không | Nếu là `true`, model không tự gọi kỹ năng này; người dùng phải gọi bằng `/skill:name`. |
+| `disable-model-invocation` | Không | Nếu là `true`, model không tự gọi kỹ năng này; người dùng phải gọi bằng `/skill:name`. Dùng khi kỹ năng có side effects nguy hiểm (gọi API, xóa file) và chỉ nên kích hoạt thủ công. |
 
 ### Quy tắc đặt tên
 
@@ -116,6 +116,20 @@ Theo [chuẩn Agent Skills](https://agentskills.io/specification#frontmatter-req
 Hợp lệ: `pdf-processing`, `data-analysis`, `code-review`
 
 Không hợp lệ: `PDF-Processing`, `-pdf`, `pdf--processing`
+
+### Ví dụ bảo mật với `allowed-tools` và `disable-model-invocation`
+
+```yaml
+---
+name: deploy-prod
+description: Deploy to production. Only triggered manually via /skill:deploy-prod.
+allowed-tools: bash read
+disable-model-invocation: true
+---
+```
+
+- `allowed-tools` giới hạn tool nào model được dùng khi kỹ năng đang hoạt động
+- `disable-model-invocation` đảm bảo kỹ năng không bao giờ được tự động nạp
 
 ## Kiểm tra hợp lệ
 
@@ -160,6 +174,8 @@ cd /path/to/brave-search && npm install
 
 - [Anthropic Skills](https://github.com/anthropics/skills) - Kỹ năng xử lý tài liệu và web development
 - [Pi Skills](https://github.com/badlogic/pi-skills) - Tìm kiếm web, tự động hóa trình duyệt, Google APIs, transcription
+- [Agent Skills Specification](https://agentskills.io/specification) - Đặc tả đầy đủ các trường frontmatter
+- [Community Packages Gallery](https://shittycodingagent.ai/packages) - Duyệt skill và package do cộng đồng đóng góp
 
 ## Đọc tiếp
 

@@ -124,11 +124,29 @@ These settings control how queued messages are delivered while the agent is work
 | `shellCommandPrefix` | string | Prefix added to every bash command |
 | `npmCommand` | string[] | Wrapper command for npm operations |
 
-Example:
+### `shellCommandPrefix` example
+
+Useful in Docker or devcontainer setups — every bash tool call gets this prefix:
+
+```json
+{
+  "shellCommandPrefix": "docker exec my-container"
+}
+```
+
+### `npmCommand` example
+
+Override how pi runs npm. Common use case: using `nvm`, `fnm`, or `mise` to pin a Node version:
 
 ```json
 {
   "npmCommand": ["mise", "exec", "node@20", "--", "npm"]
+}
+```
+
+```json
+{
+  "npmCommand": ["fnm", "exec", "--using=20", "npm"]
 }
 ```
 

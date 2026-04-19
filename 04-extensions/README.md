@@ -202,9 +202,11 @@ startup
 
 ### Agent Events
 
+> **`event.source` on the `input` event:** Check `event.source` to differentiate between `"interactive"`, `"rpc"`, and `"extension"` inputs. This is important when building extensions that behave differently in headless vs interactive mode.
+
 | Event | Use case |
 |------|----------|
-| `input` | Transform raw input before skill/template expansion |
+| `input` | Transform raw input before skill/template expansion. `event.source` is `"interactive"`, `"rpc"`, or `"extension"` |
 | `before_agent_start` | Inject messages or modify system prompt |
 | `agent_start` / `agent_end` | Track a whole user prompt lifecycle |
 | `turn_start` / `turn_end` | Observe each LLM turn |
@@ -333,7 +335,7 @@ Most handlers receive `ctx: ExtensionContext`.
 | Field / method | Purpose |
 |----------------|---------|
 | `ctx.ui` | Notifications, selects, confirms, custom UI |
-| `ctx.hasUI` | Whether the current mode supports UI |
+| `ctx.hasUI` | Whether the current mode supports UI (`true` in interactive and RPC, `false` in print and JSON) |
 | `ctx.cwd` | Current working directory |
 | `ctx.sessionManager` | Read-only session access |
 | `ctx.modelRegistry` / `ctx.model` | Model access |
@@ -341,7 +343,7 @@ Most handlers receive `ctx: ExtensionContext`.
 | `ctx.getContextUsage()` | Estimate current context usage |
 | `ctx.compact()` | Trigger compaction |
 | `ctx.abort()` | Abort current work |
-| `ctx.shutdown()` | Graceful shutdown |
+| `ctx.shutdown()` | Graceful shutdown (deferred to idle in interactive/RPC, no-op in print) |
 
 Command handlers receive `ExtensionCommandContext`, which also includes:
 - `ctx.waitForIdle()`
@@ -411,6 +413,10 @@ For normal development, put extensions in auto-discovered locations and use `/re
 
 If your custom tool edits files, use `withFileMutationQueue()` so it cooperates with built-in `edit` and `write` during parallel tool execution.
 
+```typescript
+import { withFileMutationQueue } from "@mariozechner/pi-coding-agent";
+```
+
 ### Respect cancellation
 
 Use `ctx.signal` and abort-aware APIs such as `fetch(..., { signal: ctx.signal })`.
@@ -431,7 +437,19 @@ Store state in session entries rather than hidden globals so branching and reloa
 
 ## Related
 
+### `ctx` behavior by mode
+
+| Method | Interactive | RPC | Print |
+|--------|-------------|-----|-------|
+| `ctx.hasUI` | `true` | `true` | `false` |
+| `ctx.shutdown()` | deferred to idle | deferred to next idle | no-op |
+| `ctx.ui.notify()` | shows in TUI | emits RPC request | no-op |
+| `ctx.ui.confirm()` | shows dialog | emits RPC request | no-op |
+
+## Related
+
 - [03-skills](../03-skills/README.md)
 - [05-themes](../05-themes/README.md)
 - [06-sessions](../06-sessions/README.md)
-- Official examples: `examples/extensions/` in the pi repository
+- [12-headless-modes](../12-headless-modes/README.md)
+- Official examples: [`examples/extensions/`](https://github.com/badlogic/pi-mono/blob/main/packages/coding-agent/examples/extensions/README.md) in the pi repository
