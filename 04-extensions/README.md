@@ -434,6 +434,40 @@ Store state in session entries rather than hidden globals so branching and reloa
 - Browser automation or CI triggers
 - Remote command execution via SSH
 - Games while waiting (`snake.ts`, Doom, etc.)
+
+## Popular Community Extensions
+
+A curated list of extensions worth trying. Install any of them with `pi install`.
+
+### Task Tracking & Coordination
+
+| Extension | Install | Description |
+|-----------|---------|-------------|
+| **[@tintinweb/pi-tasks](https://github.com/tintinweb/pi-tasks)** | `pi install npm:@tintinweb/pi-tasks` | Claude Code-style task tracking with 7 LLM-callable tools, persistent widget, dependency management, and auto-cascade through task DAGs. Supports shared task lists across sessions. |
+| **[@tintinweb/pi-subagents](https://github.com/tintinweb/pi-subagents)** | `pi install npm:@tintinweb/pi-subagents` | Spawn background subagents from pi. Pairs with `pi-tasks` for `TaskExecute` — run tasks as independent parallel agents with RPC-based lifecycle events. |
+
+### Side Conversations
+
+| Extension | Install | Description |
+|-----------|---------|-------------|
+| **[pi-btw](https://github.com/dbachelder/pi-btw)** | `pi install npm:pi-btw` | `/btw` opens a parallel side conversation without interrupting the main agent. Runs as a real sub-session with full tool access. Supports tangent threads, model/thinking overrides, and injecting results back into the main session. |
+
+### Prompt Enhancement
+
+| Extension | Install | Description |
+|-----------|---------|-------------|
+| **[pi-augment](https://github.com/sting8k/pi-augment)** | `pi install npm:pi-augment` | `/augment` rewrites your prompts into stronger, structured versions before sending. Detects intent (implement, debug, refactor, review, etc.), auto-selects rewrite mode, and scales effort based on complexity. Model-family aware (Claude vs GPT). |
+
+### UI & Integrations
+
+| Extension | Install | Description |
+|-----------|---------|-------------|
+| **[@alasano/pi-panels](https://github.com/alasano/house-of-pi)** | `pi install npm:@alasano/pi-panels` | Responsive status panels below the editor — git info, LLM context usage, and Spotify now-playing. |
+| **[@alasano/pi-mouse](https://github.com/alasano/house-of-pi)** | `pi install npm:@alasano/pi-mouse` | An ASCII mouse that lives above your editor. Follows your cursor as you type with an animated tail. |
+| **[@alasano/pi-linear](https://github.com/alasano/house-of-pi)** | `pi install npm:@alasano/pi-linear` | Linear integration with 55+ tools for issues, projects, documents, initiatives, comments, and more. Multi-workspace auth. |
+
+> **Sharing sessions:** The `pi-share-hf` package lets you share sessions to Hugging Face instead of GitHub Gist. Install via `pi install npm:pi-share-hf`.
+
 ---
 
 [← Skills](../03-skills/README.md) | [Table of Contents](../README.md) | [Themes →](../05-themes/README.md)

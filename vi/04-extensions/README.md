@@ -127,6 +127,40 @@ Trong handler, bạn thường dùng `ctx.ui` để dựng giao diện:
 | `ctx.hasUI` | `true` | `true` | `false` |
 | `ctx.shutdown()` | trì hoãn đến idle | trì hoãn đến idle tiếp theo | không làm gì |
 | `ctx.ui.notify()` | hiện trong TUI | phát RPC request | không làm gì |
+
+## Extension cộng đồng phổ biến
+
+Danh sách các extension đáng thử. Cài bằng `pi install`.
+
+### Quản lý task & phối hợp
+
+| Extension | Cài đặt | Mô tả |
+|-----------|---------|-------|
+| **[@tintinweb/pi-tasks](https://github.com/tintinweb/pi-tasks)** | `pi install npm:@tintinweb/pi-tasks` | Theo dõi task kiểu Claude Code với 7 tool cho LLM, widget hiển thị liên tục, quản lý dependency, auto-cascade qua DAG. Hỗ trợ chia sẻ task list giữa các session. |
+| **[@tintinweb/pi-subagents](https://github.com/tintinweb/pi-subagents)** | `pi install npm:@tintinweb/pi-subagents` | Tạo subagent chạy nền từ pi. Kết hợp với `pi-tasks` để chạy task song song qua `TaskExecute`. |
+
+### Hội thoại phụ
+
+| Extension | Cài đặt | Mô tả |
+|-----------|---------|-------|
+| **[pi-btw](https://github.com/dbachelder/pi-btw)** | `pi install npm:pi-btw` | `/btw` mở cuộc hội thoại phụ song song, không gián đoạn agent chính. Chạy như sub-session thật với đầy đủ tool. Hỗ trợ tangent thread, override model/thinking, inject kết quả về session chính. |
+
+### Tăng cường prompt
+
+| Extension | Cài đặt | Mô tả |
+|-----------|---------|-------|
+| **[pi-augment](https://github.com/sting8k/pi-augment)** | `pi install npm:pi-augment` | `/augment` viết lại prompt mạnh hơn trước khi gửi. Tự nhận diện intent (implement, debug, refactor, review...), chọn chế độ rewrite, điều chỉnh mức effort. Nhận biết model family (Claude vs GPT). |
+
+### UI & Tích hợp
+
+| Extension | Cài đặt | Mô tả |
+|-----------|---------|-------|
+| **[@alasano/pi-panels](https://github.com/alasano/house-of-pi)** | `pi install npm:@alasano/pi-panels` | Panel trạng thái bên dưới editor — git info, context usage, Spotify đang phát. |
+| **[@alasano/pi-mouse](https://github.com/alasano/house-of-pi)** | `pi install npm:@alasano/pi-mouse` | Chuột ASCII sống phía trên editor, chạy theo con trỏ khi bạn gõ. |
+| **[@alasano/pi-linear](https://github.com/alasano/house-of-pi)** | `pi install npm:@alasano/pi-linear` | Tích hợp Linear với 55+ tool cho issues, projects, documents, comments. Hỗ trợ multi-workspace. |
+
+> **Chia sẻ session:** Gói `pi-share-hf` cho phép chia sẻ session lên Hugging Face thay vì GitHub Gist. Cài qua `pi install npm:pi-share-hf`.
+
 ---
 
 [← Skills](../03-skills/README.md) | [Mục lục](../README.md) | [Giao diện →](../05-themes/README.md)
