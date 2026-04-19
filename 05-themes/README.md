@@ -274,8 +274,11 @@ import { getMarkdownTheme } from "@mariozechner/pi-coding-agent";
 
 const mdTheme = getMarkdownTheme();
 ```
+---
 
-## Related
+[← Extensions](../04-extensions/README.md) | [Table of Contents](../README.md) | [Sessions →](../06-sessions/README.md)
 
-- [04-extensions](../04-extensions/README.md)
-- [09-settings](../09-settings/README.md)
+### See Also
+
+- [Extensions](../04-extensions/README.md)
+- [Settings](../09-settings/README.md)

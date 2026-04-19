@@ -129,9 +129,13 @@ Rules:
 - không cần restart; template được nạp lại khi mở autocomplete
 - dùng `--no-prompt-templates` để tắt phát hiện template (đường dẫn chỉ định bằng `--prompt-template` vẫn hoạt động)
 - cú pháp tham số chính thức là dạng shell: `$1`, `$2`, `$@`. Một số tài liệu có thể đề cập `{{name}}` — cú pháp chuẩn là `$N`
+---
 
-## Đọc tiếp
+[← Pi Packages](../10-pi-packages/README.md) | [Mục lục](../README.md) | [Chế độ Headless →](../12-headless-modes/README.md)
 
-- [03-skills](../03-skills/README.md)
-- [10-pi-packages](../10-pi-packages/README.md)
-- Bản đầy đủ tiếng Anh: [../../11-prompt-templates/README.md](../../11-prompt-templates/README.md)
+### Xem thêm
+
+- [Skills](../03-skills/README.md)
+- [Pi Packages](../10-pi-packages/README.md)
+
+Bản tiếng Anh: [../../11-prompt-templates/README.md](../../11-prompt-templates/README.md)

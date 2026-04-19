@@ -105,11 +105,15 @@ pi --list-models claude         # lọc model theo query
 - **Quá tải thông tin từ đầu:** Không cần học skills/extensions/themes trong chương này; để sang các chương mở rộng.
 - **Quên quản lý phiên:** Nếu đang làm việc dở, dùng `/resume` hoặc `/tree` thay vì mở phiên mới liên tục.
 - **Nhầm loại tin nhắn khi agent đang chạy:** `Enter` và `Alt+Enter` có hành vi khác nhau; nên dùng đúng ngữ cảnh.
+---
 
-## Đọc tiếp
+[Mục lục](../README.md) | [Bộ nhớ & Ngữ cảnh →](../02-memory/README.md)
 
-- [02-memory](../02-memory/README.md)
-- [06-sessions](../06-sessions/README.md)
-- [07-keybindings](../07-keybindings/README.md)
-- [12-headless-modes](../12-headless-modes/README.md)
-- Bản đầy đủ tiếng Anh: [../../01-commands/README.md](../../01-commands/README.md)
+### Xem thêm
+
+- [Bộ nhớ & Ngữ cảnh](../02-memory/README.md)
+- [Phiên làm việc](../06-sessions/README.md)
+- [Phím tắt](../07-keybindings/README.md)
+- [Chế độ Headless](../12-headless-modes/README.md)
+
+Bản tiếng Anh: [../../01-commands/README.md](../../01-commands/README.md)

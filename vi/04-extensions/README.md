@@ -127,12 +127,15 @@ Trong handler, bạn thường dùng `ctx.ui` để dựng giao diện:
 | `ctx.hasUI` | `true` | `true` | `false` |
 | `ctx.shutdown()` | trì hoãn đến idle | trì hoãn đến idle tiếp theo | không làm gì |
 | `ctx.ui.notify()` | hiện trong TUI | phát RPC request | không làm gì |
+---
 
-## Đọc tiếp
+[← Skills](../03-skills/README.md) | [Mục lục](../README.md) | [Giao diện →](../05-themes/README.md)
 
-- [03-skills](../03-skills/README.md)
-- [05-themes](../05-themes/README.md)
-- [06-sessions](../06-sessions/README.md)
-- [12-headless-modes](../12-headless-modes/README.md)
-- Ví dụ chính thức: [`examples/extensions/`](https://github.com/badlogic/pi-mono/blob/main/packages/coding-agent/examples/extensions/README.md)
-- Bản đầy đủ tiếng Anh: [../../04-extensions/README.md](../../04-extensions/README.md)
+### Xem thêm
+
+- [Skills](../03-skills/README.md)
+- [Giao diện](../05-themes/README.md)
+- [Phiên làm việc](../06-sessions/README.md)
+- [Chế độ Headless](../12-headless-modes/README.md)
+
+Bản tiếng Anh: [../../04-extensions/README.md](../../04-extensions/README.md)

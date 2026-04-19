@@ -1,0 +1,168 @@
+/* pi-howto documentation styles */
+/* Usage: reference from markdown with a <link> tag or use with a markdown renderer */
+
+:root {
+  --pi-bg: #0d1117;
+  --pi-surface: #161b22;
+  --pi-border: #30363d;
+  --pi-text: #e6edf3;
+  --pi-text-muted: #8b949e;
+  --pi-accent: #58a6ff;
+  --pi-accent-hover: #79c0ff;
+  --pi-green: #3fb950;
+  --pi-orange: #d29922;
+  --pi-red: #f85149;
+  --pi-code-bg: #1c2128;
+  --pi-radius: 6px;
+}
+
+/* Light mode override */
+@media (prefers-color-scheme: light) {
+  :root {
+    --pi-bg: #ffffff;
+    --pi-surface: #f6f8fa;
+    --pi-border: #d0d7de;
+    --pi-text: #1f2328;
+    --pi-text-muted: #656d76;
+    --pi-accent: #0969da;
+    --pi-accent-hover: #0550ae;
+    --pi-green: #1a7f37;
+    --pi-orange: #9a6700;
+    --pi-red: #cf222e;
+    --pi-code-bg: #f6f8fa;
+  }
+}
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Noto Sans", Helvetica, Arial, sans-serif;
+  font-size: 16px;
+  line-height: 1.6;
+  color: var(--pi-text);
+  background: var(--pi-bg);
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 2rem 1.5rem;
+}
+
+/* Headings */
+h1 { font-size: 2em; border-bottom: 1px solid var(--pi-border); padding-bottom: 0.3em; margin-top: 1.5em; }
+h2 { font-size: 1.5em; border-bottom: 1px solid var(--pi-border); padding-bottom: 0.3em; margin-top: 1.5em; }
+h3 { font-size: 1.25em; margin-top: 1.25em; }
+h1:first-child { margin-top: 0; }
+
+/* Links */
+a { color: var(--pi-accent); text-decoration: none; }
+a:hover { text-decoration: underline; color: var(--pi-accent-hover); }
+
+/* Code */
+code {
+  background: var(--pi-code-bg);
+  border: 1px solid var(--pi-border);
+  border-radius: var(--pi-radius);
+  padding: 0.15em 0.4em;
+  font-size: 0.875em;
+  font-family: "SFMono-Regular", Consolas, "Liberation Mono", Menlo, monospace;
+}
+
+pre {
+  background: var(--pi-code-bg);
+  border: 1px solid var(--pi-border);
+  border-radius: var(--pi-radius);
+  padding: 1em;
+  overflow-x: auto;
+  line-height: 1.45;
+}
+
+pre code {
+  background: none;
+  border: none;
+  padding: 0;
+  font-size: 0.875em;
+}
+
+/* Tables */
+table {
+  border-collapse: collapse;
+  width: 100%;
+  margin: 1em 0;
+}
+
+th, td {
+  border: 1px solid var(--pi-border);
+  padding: 0.5em 0.75em;
+  text-align: left;
+}
+
+th {
+  background: var(--pi-surface);
+  font-weight: 600;
+}
+
+tr:nth-child(even) { background: var(--pi-surface); }
+
+/* Blockquotes */
+blockquote {
+  border-left: 4px solid var(--pi-accent);
+  margin: 1em 0;
+  padding: 0.5em 1em;
+  color: var(--pi-text-muted);
+  background: var(--pi-surface);
+  border-radius: 0 var(--pi-radius) var(--pi-radius) 0;
+}
+
+blockquote p { margin: 0.25em 0; }
+
+/* Lists */
+ul, ol { padding-left: 1.5em; }
+li + li { margin-top: 0.25em; }
+
+/* Horizontal rule (nav separator) */
+hr {
+  border: none;
+  border-top: 2px solid var(--pi-border);
+  margin: 2em 0 1em;
+}
+
+/* Navigation footer — targets the paragraph right after hr */
+hr + p {
+  text-align: center;
+  font-size: 0.95em;
+  padding: 0.75em 0;
+  background: var(--pi-surface);
+  border-radius: var(--pi-radius);
+  margin-bottom: 0.5em;
+}
+
+/* See Also / Xem thêm section */
+h3:last-of-type {
+  font-size: 1em;
+  color: var(--pi-text-muted);
+  margin-top: 0.75em;
+  border-bottom: none;
+}
+
+/* Images */
+img { max-width: 100%; border-radius: var(--pi-radius); }
+
+/* Keyboard shortcuts */
+kbd {
+  background: var(--pi-surface);
+  border: 1px solid var(--pi-border);
+  border-bottom-width: 2px;
+  border-radius: 3px;
+  padding: 0.1em 0.4em;
+  font-size: 0.85em;
+  font-family: inherit;
+}
+
+/* Alert/tip boxes — GitHub style */
+.markdown-alert {
+  border-left: 4px solid;
+  border-radius: 0 var(--pi-radius) var(--pi-radius) 0;
+  padding: 0.5em 1em;
+  margin: 1em 0;
+}
+.markdown-alert-note { border-color: var(--pi-accent); background: color-mix(in srgb, var(--pi-accent) 8%, transparent); }
+.markdown-alert-tip { border-color: var(--pi-green); background: color-mix(in srgb, var(--pi-green) 8%, transparent); }
+.markdown-alert-warning { border-color: var(--pi-orange); background: color-mix(in srgb, var(--pi-orange) 8%, transparent); }
+.markdown-alert-caution { border-color: var(--pi-red); background: color-mix(in srgb, var(--pi-red) 8%, transparent); }

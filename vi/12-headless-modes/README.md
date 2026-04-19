@@ -123,10 +123,14 @@ done
 ```bash
 pi --mode rpc --no-session --model anthropic/claude-sonnet-4-20250514
 ```
+---
 
-## Đọc tiếp
+[← Prompt Templates](../11-prompt-templates/README.md) | [Mục lục](../README.md)
 
-- [01-commands](../01-commands/README.md)
-- [04-extensions](../04-extensions/README.md)
-- [06-sessions](../06-sessions/README.md)
-- Bản đầy đủ tiếng Anh: [../../12-headless-modes/README.md](../../12-headless-modes/README.md)
+### Xem thêm
+
+- [Lệnh cơ bản](../01-commands/README.md)
+- [Extensions](../04-extensions/README.md)
+- [Phiên làm việc](../06-sessions/README.md)
+
+Bản tiếng Anh: [../../12-headless-modes/README.md](../../12-headless-modes/README.md)

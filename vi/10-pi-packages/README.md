@@ -110,11 +110,15 @@ pi install git:github.com/badlogic/pi-skills  # web search, browser, Google APIs
 ## Bảo mật
 
 > **Cảnh báo:** Gói pi có thể chạy mã với toàn quyền trên hệ thống. Extensions có thể thực thi mã tùy ý và skills có thể hướng dẫn model chạy lệnh. Chỉ cài từ nguồn bạn tin tưởng.
+---
 
-## Đọc tiếp
+[← Cài đặt](../09-settings/README.md) | [Mục lục](../README.md) | [Prompt Templates →](../11-prompt-templates/README.md)
 
-- [03-skills](../03-skills/README.md)
-- [04-extensions](../04-extensions/README.md)
-- [05-themes](../05-themes/README.md)
-- [09-settings](../09-settings/README.md)
-- Bản đầy đủ tiếng Anh: [../../10-pi-packages/README.md](../../10-pi-packages/README.md)
+### Xem thêm
+
+- [Skills](../03-skills/README.md)
+- [Extensions](../04-extensions/README.md)
+- [Giao diện](../05-themes/README.md)
+- [Cài đặt](../09-settings/README.md)
+
+Bản tiếng Anh: [../../10-pi-packages/README.md](../../10-pi-packages/README.md)

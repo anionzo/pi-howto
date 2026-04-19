@@ -192,3 +192,11 @@ Usage: `/test src/utils/parser.ts`
 - **Share with team** — put `.pi/prompts/` in version control
 - **Disable in headless** — use `--no-prompt-templates` to skip template discovery (explicit `--prompt-template` paths still load)
 - **Argument syntax** — templates use `$1`, `$2`, `$@` etc. for positional arguments. Some documentation may reference `{{name}}` placeholders — the canonical syntax is the shell-style `$N` form
+---
+
+[← Pi Packages](../10-pi-packages/README.md) | [Table of Contents](../README.md) | [Headless Modes →](../12-headless-modes/README.md)
+
+### See Also
+
+- [Skills](../03-skills/README.md)
+- [Pi Packages](../10-pi-packages/README.md)

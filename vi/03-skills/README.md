@@ -176,9 +176,13 @@ cd /path/to/brave-search && npm install
 - [Pi Skills](https://github.com/badlogic/pi-skills) - Tìm kiếm web, tự động hóa trình duyệt, Google APIs, transcription
 - [Agent Skills Specification](https://agentskills.io/specification) - Đặc tả đầy đủ các trường frontmatter
 - [Community Packages Gallery](https://shittycodingagent.ai/packages) - Duyệt skill và package do cộng đồng đóng góp
+---
 
-## Đọc tiếp
+[← Bộ nhớ & Ngữ cảnh](../02-memory/README.md) | [Mục lục](../README.md) | [Extensions →](../04-extensions/README.md)
 
-- [04-extensions](../04-extensions/README.md)
-- [09-settings](../09-settings/README.md)
-- Bản đầy đủ tiếng Anh: [../../03-skills/README.md](../../03-skills/README.md)
+### Xem thêm
+
+- [Extensions](../04-extensions/README.md)
+- [Cài đặt](../09-settings/README.md)
+
+Bản tiếng Anh: [../../03-skills/README.md](../../03-skills/README.md)

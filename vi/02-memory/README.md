@@ -125,11 +125,15 @@ pi --fork <path>
 | `SYSTEM.md` | Thay thế system prompt mặc định |
 | `APPEND_SYSTEM.md` | Nối thêm hướng dẫn vào system prompt |
 | `settings.json` | Cấu hình runtime |
+---
 
-## Đọc tiếp
+[← Lệnh cơ bản](../01-commands/README.md) | [Mục lục](../README.md) | [Skills →](../03-skills/README.md)
 
-- [01-commands](../01-commands/README.md)
-- [03-skills](../03-skills/README.md)
-- [06-sessions](../06-sessions/README.md)
-- [09-settings](../09-settings/README.md)
-- Bản đầy đủ tiếng Anh: [../../02-memory/README.md](../../02-memory/README.md)
+### Xem thêm
+
+- [Lệnh cơ bản](../01-commands/README.md)
+- [Skills](../03-skills/README.md)
+- [Phiên làm việc](../06-sessions/README.md)
+- [Cài đặt](../09-settings/README.md)
+
+Bản tiếng Anh: [../../02-memory/README.md](../../02-memory/README.md)

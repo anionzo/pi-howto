@@ -404,9 +404,11 @@ For SDK and extension work, `SessionManager` is the main API.
 - `getLeafId()`
 - `branch(entryId)`
 - `buildSessionContext()`
+---
 
-## Related
+[← Themes](../05-themes/README.md) | [Table of Contents](../README.md) | [Keybindings →](../07-keybindings/README.md)
 
-- [07-keybindings](../07-keybindings/README.md)
-- [09-settings](../09-settings/README.md)
-- Official docs: `docs/session.md`, `docs/tree.md`, `docs/compaction.md`
+### See Also
+
+- [Keybindings](../07-keybindings/README.md)
+- [Settings](../09-settings/README.md)

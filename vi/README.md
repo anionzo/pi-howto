@@ -1,3 +1,5 @@
+<link rel="stylesheet" href="../assets/docs.css">
+
 # pi-howto 🇻🇳
 
 <p align="center">

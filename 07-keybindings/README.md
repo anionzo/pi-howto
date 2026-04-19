@@ -203,8 +203,11 @@ A binding can be a single key or an array of keys. User config overrides default
   "tui.editor.cursorWordRight": ["alt+right", "alt+w"]
 }
 ```
+---
 
-## Related
+[← Sessions](../06-sessions/README.md) | [Table of Contents](../README.md) | [Providers →](../08-providers/README.md)
 
-- [06-sessions](../06-sessions/README.md)
-- [09-settings](../09-settings/README.md)
+### See Also
+
+- [Sessions](../06-sessions/README.md)
+- [Settings](../09-settings/README.md)

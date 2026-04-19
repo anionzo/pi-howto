@@ -125,9 +125,13 @@ Thêm `.pi/sessions/` vào `.gitignore` để không commit session lên repo.
 ### Compaction và điều hướng `/tree`
 
 Khi dùng `/tree` để quay về điểm trước khi compaction xảy ra, bạn nhìn thấy lịch sử JSONL đầy đủ. Nhưng nếu tiếp tục hội thoại từ điểm đó, ngữ cảnh LLM nhận sẽ được **xây lại từ bản tóm tắt compaction**, không phải từ raw messages. Bản tóm tắt là những gì model "nhớ".
+---
 
-## Đọc tiếp
+[← Giao diện](../05-themes/README.md) | [Mục lục](../README.md) | [Phím tắt →](../07-keybindings/README.md)
 
-- [07-keybindings](../07-keybindings/README.md)
-- [09-settings](../09-settings/README.md)
-- Bản đầy đủ tiếng Anh: [../../06-sessions/README.md](../../06-sessions/README.md)
+### Xem thêm
+
+- [Phím tắt](../07-keybindings/README.md)
+- [Cài đặt](../09-settings/README.md)
+
+Bản tiếng Anh: [../../06-sessions/README.md](../../06-sessions/README.md)

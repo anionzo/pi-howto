@@ -183,9 +183,11 @@ cd /path/to/brave-search && npm install
 - [Pi Skills](https://github.com/badlogic/pi-skills) - Web search, browser automation, Google APIs, transcription
 - [Agent Skills Specification](https://agentskills.io/specification) - Full specification of frontmatter fields
 - [Community Packages Gallery](https://shittycodingagent.ai/packages) - Browse community-contributed skills and packages
+---
 
-## Related
+[← Memory & Context](../02-memory/README.md) | [Table of Contents](../README.md) | [Extensions →](../04-extensions/README.md)
 
-- [04-extensions](../04-extensions/README.md)
-- [09-settings](../09-settings/README.md)
-- Official docs: `docs/skills.md`
+### See Also
+
+- [Extensions](../04-extensions/README.md)
+- [Settings](../09-settings/README.md)

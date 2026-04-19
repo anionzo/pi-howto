@@ -451,9 +451,11 @@ Try:
 ### Additional sharing packages
 
 - `pi-share-hf` — share sessions to Hugging Face instead of GitHub Gist. Install via `pi install npm:pi-share-hf`.
+---
 
-## Related
+[← Keybindings](../07-keybindings/README.md) | [Table of Contents](../README.md) | [Settings →](../09-settings/README.md)
 
-- [09-settings](../09-settings/README.md)
-- [10-pi-packages](../10-pi-packages/README.md)
-- Official docs: `docs/providers.md`, `docs/models.md`, `docs/custom-provider.md`
+### See Also
+
+- [Settings](../09-settings/README.md)
+- [Pi Packages](../10-pi-packages/README.md)

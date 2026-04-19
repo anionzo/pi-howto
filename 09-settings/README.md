@@ -275,9 +275,12 @@ Result:
 - theme changes often apply immediately
 - many other settings require `/reload`
 - some session/model choices only affect new turns
+---
 
-## Related
+[← Providers](../08-providers/README.md) | [Table of Contents](../README.md) | [Pi Packages →](../10-pi-packages/README.md)
 
-- [05-themes](../05-themes/README.md)
-- [08-providers](../08-providers/README.md)
-- [10-pi-packages](../10-pi-packages/README.md)
+### See Also
+
+- [Themes](../05-themes/README.md)
+- [Providers](../08-providers/README.md)
+- [Pi Packages](../10-pi-packages/README.md)

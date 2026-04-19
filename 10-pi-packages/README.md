@@ -250,10 +250,13 @@ pi install git:github.com/badlogic/pi-skills  # web search, browser, Google APIs
 ## Security
 
 > **Warning:** Pi packages run with full system access. Extensions can execute arbitrary code and skills can instruct the model to run commands. Review source before installing third-party packages.
+---
 
-## Related
+[← Settings](../09-settings/README.md) | [Table of Contents](../README.md) | [Prompt Templates →](../11-prompt-templates/README.md)
 
-- [03-skills](../03-skills/README.md)
-- [04-extensions](../04-extensions/README.md)
-- [05-themes](../05-themes/README.md)
-- [09-settings](../09-settings/README.md)
+### See Also
+
+- [Skills](../03-skills/README.md)
+- [Extensions](../04-extensions/README.md)
+- [Themes](../05-themes/README.md)
+- [Settings](../09-settings/README.md)

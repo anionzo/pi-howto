@@ -434,22 +434,13 @@ Store state in session entries rather than hidden globals so branching and reloa
 - Browser automation or CI triggers
 - Remote command execution via SSH
 - Games while waiting (`snake.ts`, Doom, etc.)
+---
 
-## Related
+[← Skills](../03-skills/README.md) | [Table of Contents](../README.md) | [Themes →](../05-themes/README.md)
 
-### `ctx` behavior by mode
+### See Also
 
-| Method | Interactive | RPC | Print |
-|--------|-------------|-----|-------|
-| `ctx.hasUI` | `true` | `true` | `false` |
-| `ctx.shutdown()` | deferred to idle | deferred to next idle | no-op |
-| `ctx.ui.notify()` | shows in TUI | emits RPC request | no-op |
-| `ctx.ui.confirm()` | shows dialog | emits RPC request | no-op |
-
-## Related
-
-- [03-skills](../03-skills/README.md)
-- [05-themes](../05-themes/README.md)
-- [06-sessions](../06-sessions/README.md)
-- [12-headless-modes](../12-headless-modes/README.md)
-- Official examples: [`examples/extensions/`](https://github.com/badlogic/pi-mono/blob/main/packages/coding-agent/examples/extensions/README.md) in the pi repository
+- [Skills](../03-skills/README.md)
+- [Themes](../05-themes/README.md)
+- [Sessions](../06-sessions/README.md)
+- [Headless Modes](../12-headless-modes/README.md)

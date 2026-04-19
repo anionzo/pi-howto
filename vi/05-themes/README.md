@@ -91,9 +91,13 @@ Pi hỗ trợ bốn kiểu giá trị:
 - nên thử với markdown, diff, output dài và thinking blocks
 - nếu dùng VS Code terminal, đặt `terminal.integrated.minimumContrastRatio = 1` để thấy màu chính xác. VS Code tự điều chỉnh contrast và ghi đè màu theme — setting này tắt cơ chế đó
 - nếu hay dùng `/share` để xuất session, nên khai báo phần `export` trong theme JSON để HTML export nhìn khớp với giao diện terminal
+---
 
-## Đọc tiếp
+[← Extensions](../04-extensions/README.md) | [Mục lục](../README.md) | [Phiên làm việc →](../06-sessions/README.md)
 
-- [04-extensions](../04-extensions/README.md)
-- [09-settings](../09-settings/README.md)
-- Bản đầy đủ tiếng Anh: [../../05-themes/README.md](../../05-themes/README.md)
+### Xem thêm
+
+- [Extensions](../04-extensions/README.md)
+- [Cài đặt](../09-settings/README.md)
+
+Bản tiếng Anh: [../../05-themes/README.md](../../05-themes/README.md)

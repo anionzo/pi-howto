@@ -115,10 +115,14 @@ Kết quả thực tế:
 - nhiều thay đổi sẽ có hiệu lực sau `/reload`
 - theme thường cập nhật ngay
 - một số lựa chọn chỉ ảnh hưởng tới các lượt làm việc mới
+---
 
-## Đọc tiếp
+[← Nhà cung cấp](../08-providers/README.md) | [Mục lục](../README.md) | [Pi Packages →](../10-pi-packages/README.md)
 
-- [05-themes](../05-themes/README.md)
-- [08-providers](../08-providers/README.md)
-- [10-pi-packages](../10-pi-packages/README.md)
-- Bản đầy đủ tiếng Anh: [../../09-settings/README.md](../../09-settings/README.md)
+### Xem thêm
+
+- [Giao diện](../05-themes/README.md)
+- [Nhà cung cấp](../08-providers/README.md)
+- [Pi Packages](../10-pi-packages/README.md)
+
+Bản tiếng Anh: [../../09-settings/README.md](../../09-settings/README.md)

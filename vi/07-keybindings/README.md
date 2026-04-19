@@ -105,9 +105,13 @@ Một số terminal cũng dùng `Ctrl+P` cho lịch sử lệnh. Nếu bị xung
 - `Ctrl+T` — bật/tắt thinking blocks
 - `Ctrl+G` — mở trình soạn thảo ngoài
 - `Escape` — hủy thao tác hiện tại
+---
 
-## Đọc tiếp
+[← Phiên làm việc](../06-sessions/README.md) | [Mục lục](../README.md) | [Nhà cung cấp →](../08-providers/README.md)
 
-- [06-sessions](../06-sessions/README.md)
-- [09-settings](../09-settings/README.md)
-- Bản đầy đủ tiếng Anh: [../../07-keybindings/README.md](../../07-keybindings/README.md)
+### Xem thêm
+
+- [Phiên làm việc](../06-sessions/README.md)
+- [Cài đặt](../09-settings/README.md)
+
+Bản tiếng Anh: [../../07-keybindings/README.md](../../07-keybindings/README.md)

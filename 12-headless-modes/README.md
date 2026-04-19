@@ -149,10 +149,12 @@ done
 # Start as RPC subprocess
 pi --mode rpc --no-session --model anthropic/claude-sonnet-4-20250514
 ```
+---
 
-## Related
+[← Prompt Templates](../11-prompt-templates/README.md) | [Table of Contents](../README.md)
 
-- [01-commands](../01-commands/README.md)
-- [04-extensions](../04-extensions/README.md)
-- [06-sessions](../06-sessions/README.md)
-- Official docs: [`docs/rpc.md`](https://github.com/badlogic/pi-mono/blob/main/packages/coding-agent/docs/rpc.md), [`docs/sdk.md`](https://github.com/badlogic/pi-mono/blob/main/packages/coding-agent/docs/sdk.md)
+### See Also
+
+- [Commands](../01-commands/README.md)
+- [Extensions](../04-extensions/README.md)
+- [Sessions](../06-sessions/README.md)

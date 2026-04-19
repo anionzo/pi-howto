@@ -127,10 +127,13 @@ pi --fork <path>     # fork session into a new one
 | `SYSTEM.md` | Replace default system prompt |
 | `APPEND_SYSTEM.md` | Append extra instructions |
 | `settings.json` | Runtime configuration |
+---
 
-## Related
+[← Commands](../01-commands/README.md) | [Table of Contents](../README.md) | [Skills →](../03-skills/README.md)
 
-- [01-commands](../01-commands/README.md)
-- [03-skills](../03-skills/README.md)
-- [06-sessions](../06-sessions/README.md)
-- [09-settings](../09-settings/README.md)
+### See Also
+
+- [Commands](../01-commands/README.md)
+- [Skills](../03-skills/README.md)
+- [Sessions](../06-sessions/README.md)
+- [Settings](../09-settings/README.md)

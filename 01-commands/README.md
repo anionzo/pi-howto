@@ -105,10 +105,13 @@ pi --list-models claude         # filter models by query
 - **Too much too early:** you do not need to learn skills, extensions, or themes before using the basic workflow.
 - **Session sprawl:** use `/resume` or `/tree` before creating more sessions than you need.
 - **Shortcut confusion:** `Enter` and `Alt+Enter` do different things while the agent is still working.
+---
 
-## Read Next
+[Table of Contents](../README.md) | [Memory & Context →](../02-memory/README.md)
 
-- [02-memory](../02-memory/README.md)
-- [06-sessions](../06-sessions/README.md)
-- [07-keybindings](../07-keybindings/README.md)
-- [12-headless-modes](../12-headless-modes/README.md)
+### See Also
+
+- [Memory & Context](../02-memory/README.md)
+- [Sessions](../06-sessions/README.md)
+- [Keybindings](../07-keybindings/README.md)
+- [Headless Modes](../12-headless-modes/README.md)
