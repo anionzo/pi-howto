@@ -10,6 +10,8 @@
 
 Pi là một công cụ hỗ trợ lập trình trên terminal theo hướng tối giản. Bộ tài liệu này sắp xếp nội dung theo hướng đi từ nhập môn đến tùy biến sâu để bạn vào việc nhanh mà vẫn có chỗ đào sâu khi cần.
 
+> *Lần đầu gặp pi, mình thấy nó giống hệt một hộp lego vậy — mỗi package là một miếng ghép, mỗi skill là một khớp nối, mỗi extension là một phụ kiện cool ngầu. Ai cũng có thể ngồi xuống, lắp ráp theo ý mình, rồi cuối cùng đứng lên với một con robot riêng chỉ thuộc về mình thôi. Mà hay ở chỗ là — không thích miếng ghép có sẵn à? Thì tự chế luôn một miếng mới, rồi chia cho người khác chơi cùng.*
+
 ## Repo này bao quát những gì?
 
 Bộ tài liệu này giải thích các phần chính của pi:

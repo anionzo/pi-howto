@@ -10,6 +10,8 @@
 
 Pi is a minimal terminal coding harness. This repo organizes the core concepts, day-one usage, and deeper customization paths into a guide you can navigate progressively.
 
+> *The first time I met pi, it felt like opening a box of lego — every package a brick, every skill a joint, every extension a cool little accessory. Anyone can sit down, snap the pieces together however they like, and stand up with a robot that's entirely their own. And here's the fun part — don't like the pieces in the box? Make your own, then share them so others can play too.*
+
 ## What This Repo Covers
 
 This guide explains the main parts of pi:
