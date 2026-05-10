@@ -87,6 +87,29 @@ import {
 } from "@mariozechner/pi-coding-agent";
 ```
 
+### `runPrintMode()`
+
+Chạy truy vấn một lần theo chương trình:
+
+```typescript
+await runPrintMode({
+  prompt: "Tóm tắt codebase này",
+  model: "anthropic/claude-sonnet-4-20250514",
+  cwd: "/path/to/project"
+});
+```
+
+### `createAgentSession()`
+
+Tạo một phiên agent đầy đủ cho tích hợp tùy chỉnh:
+
+```typescript
+const session = await createAgentSession({
+  cwd: "/path/to/project",
+  sessionDir: "/tmp/sessions"
+});
+```
+
 ### Tài liệu tham khảo
 
 Tài liệu SDK đầy đủ: [`docs/sdk.md`](https://github.com/badlogic/pi-mono/blob/main/packages/coding-agent/docs/sdk.md)

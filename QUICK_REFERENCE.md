@@ -45,6 +45,8 @@ pi --mode json               # JSON event stream
 pi --mode rpc                # RPC mode (JSON protocol via stdin/stdout)
 pi --no-skills               # disable skill discovery
 pi --no-themes               # disable theme discovery
+pi --no-extensions           # disable extension discovery
+pi --no-rules                # disable rules discovery
 pi --no-prompt-templates     # disable prompt template discovery
 pi --list-models claude      # list models matching query
 ```

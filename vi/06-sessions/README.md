@@ -101,6 +101,28 @@ Ví dụ:
 - compaction là cơ chế tóm tắt có cấu trúc, không phải xóa mù quáng
 - nếu cần xem lại lịch sử cũ, hãy quay lại qua `/tree`
 
+## Event hooks cho vòng đời phiên
+
+Các tiện ích mở rộng có thể chặn các sự kiện trong vòng đời phiên để tùy biến hành vi. Danh sách hook có sẵn:
+
+| Sự kiện | Khi nào kích hoạt |
+|---------|--------------------|
+| `session_start` | Khi bắt đầu một phiên mới |
+| `session_shutdown` | Khi phiên sắp kết thúc |
+| `session_before_compact` | Trước khi nén ngữ cảnh (tự động hoặc thủ công) |
+| `session_compact` | Sau khi nén hoàn tất |
+| `session_before_fork` | Trước khi `/fork` tạo tệp phiên mới |
+| `session_before_switch` | Trước khi `/tree` điều hướng đến entry khác |
+| `session_before_tree` | Trước khi tóm tắt nhánh trong `/tree` |
+
+Đăng ký hook trong extension qua `pi.on("tên_sự_kiện", handler)`. Ví dụ:
+
+```typescript
+pi.on("session_before_compact", async (event, ctx) => {
+  ctx.ui.notify("Đang nén ngữ cảnh...");
+});
+```
+
 ## CI và môi trường team
 
 ### Session tạm trong CI

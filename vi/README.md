@@ -100,3 +100,22 @@ pi
 - [x] 11-prompt-templates
 - [x] CATALOG.md
 - [x] QUICK_REFERENCE.md
+
+## Hệ sinh thái & Cộng đồng
+
+Bên ngoài công cụ pi gốc, một hệ sinh thái ngày càng phát triển với các tiện ích mở rộng và tích hợp đang hình thành:
+
+| Dự án | Mô tả | Liên kết |
+|-------|-------|----------|
+| **Oh-My-Pi** | Fork cộng đồng với hash-anchored edits, LSP, Python, browser, subagents, MCP support, autonomous memory | [can1357/oh-my-pi](https://github.com/can1357/oh-my-pi) |
+| **OpenClaw** | Trợ lý AI đa kênh sử dụng toàn bộ pi-mono stack (WhatsApp, Telegram, Discord, Slack, Signal, iMessage, Google Chat, Microsoft Teams) | [shittycodingagent.ai](https://shittycodingagent.ai) |
+| **agent** | Bộ 28 extension biến Pi thành trợ lý lập trình đa tác nhân với 6 chế độ (PLAN, SPEC, TEAM, CHAIN, PIPELINE...) | [Ricardo Ruiz](https://github.com/ricardoruiz) |
+
+> **Lưu ý**: Hệ sinh thái phát triển nhanh. Các dự án này do cộng đồng duy trì và có thể thay đổi độc lập. Hãy kiểm tra repo của từng dự án để biết trạng thái hiện tại.
+
+## Liên kết liên quan
+
+- [Repo chính thức của pi](https://github.com/badlogic/pi-mono)
+- [Gói npm](https://www.npmjs.com/package/@mariozechner/pi-coding-agent)
+- [Đặc tả Agent Skills](https://agentskills.io)
+- [Cộng đồng Discord](https://discord.gg/3cU7Bz4UPx)

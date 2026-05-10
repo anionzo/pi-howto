@@ -45,6 +45,8 @@ pi --mode json                  # JSON event stream
 pi --mode rpc                   # RPC mode (giao thức JSON qua stdin/stdout)
 pi --no-skills                  # tắt phát hiện skill
 pi --no-themes                  # tắt phát hiện theme
+pi --no-extensions              # tắt phát hiện extension
+pi --no-rules                   # tắt phát hiện rules
 pi --no-prompt-templates        # tắt phát hiện prompt template
 pi --list-models claude         # liệt kê model theo query
 ```

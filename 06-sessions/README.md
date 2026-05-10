@@ -311,6 +311,28 @@ Similarly, `session_before_tree` intercepts branch summarization.
 
 Compaction is **lossy for prompt context** but the full raw history remains in the JSONL session file. Use `/tree` to revisit older branches or pre-compaction points.
 
+## Event Hooks for Session Lifecycle
+
+Extensions can hook into session lifecycle events to customize behavior. The following hooks are available:
+
+| Event | When it fires |
+|-------|---------------|
+| `session_start` | A new session begins |
+| `session_shutdown` | The session is about to end |
+| `session_before_compact` | Before auto or manual compaction |
+| `session_compact` | After compaction completes |
+| `session_before_fork` | Before `/fork` creates a new session file |
+| `session_before_switch` | Before `/tree` navigates to a different entry |
+| `session_before_tree` | Before branch summarization during `/tree` |
+
+Register hooks in extensions via `pi.on("event_name", handler)`. Example:
+
+```typescript
+pi.on("session_before_compact", async (event, ctx) => {
+  ctx.ui.notify("Compacting context...");
+});
+```
+
 ## CI & Team Environments
 
 ### Ephemeral sessions in CI

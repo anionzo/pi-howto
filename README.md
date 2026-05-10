@@ -118,6 +118,18 @@ pi
 - [x] CATALOG.md
 - [x] QUICK_REFERENCE.md
 
+## Ecosystem & Community
+
+Beyond the core pi tool, a growing ecosystem of extensions and integrations exists:
+
+| Project | Description | Link |
+|---------|-------------|------|
+| **Oh-My-Pi** | Community fork with hash-anchored edits, LSP, Python, browser, subagents, MCP support, autonomous memory | [can1357/oh-my-pi](https://github.com/can1357/oh-my-pi) |
+| **OpenClaw** | Multi-channel AI assistant using the full pi-mono stack (WhatsApp, Telegram, Discord, Slack, Signal, iMessage, Google Chat, Microsoft Teams) | [shittycodingagent.ai](https://shittycodingagent.ai) |
+| **agent** | 28 extensions turning Pi into a multi-agent coding assistant with 6 modes (PLAN, SPEC, TEAM, CHAIN, PIPELINE...) | [Ricardo Ruiz](https://github.com/ricardoruiz) |
+
+> **Note**: The ecosystem evolves quickly. These projects are community-maintained and may change independently. Check each project's repository for current status.
+
 ## Related Links
 
 - [Official pi repository](https://github.com/badlogic/pi-mono)
